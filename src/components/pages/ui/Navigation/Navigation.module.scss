@@ -1,0 +1,36 @@
+input {
+  all: unset;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+.nav {
+  @apply bg-[#0D0D0D] flex w-[100%] items-center h-[50px] justify-between;
+}
+
+.firstUl {
+  @apply ml-8 flex flex-row w-[30%] justify-between items-center h-full;
+}
+
+.secondUl {
+  @apply flex flex-row w-[50%] items-center justify-end h-full;
+}
+
+.el {
+  @apply text-white font-normal text-base uppercase;
+}
+
+.el:last-of-type {
+  @apply mr-12;
+}
+
+.box {
+  @apply bg-[#202020] flex items-center w-[230px] h-full;
+}
+
+.input {
+  @apply ml-5 outline-none;
+}
