@@ -20,11 +20,13 @@ textarea:focus {
 }
 
 .el {
-  @apply text-white font-normal text-base uppercase;
-}
-
-.el:last-of-type {
-  @apply mr-12;
+  @apply text-white font-normal text-base uppercase transition-opacity;
+  &:last-of-type {
+    @apply mr-12;
+  }
+  &:hover {
+    @apply cursor-pointer opacity-40;
+  }
 }
 
 .box {
