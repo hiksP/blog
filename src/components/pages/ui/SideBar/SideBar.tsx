@@ -1,8 +1,8 @@
 import { FC } from "react";
 import styles from "./SideBar.module.scss";
 import background from "../../../../assets/background.svg";
-import steve from "../../../../assets/steve.jpg/";
 import inst from "../../../../assets/instagram.svg";
+import steve from "../../../../assets/steve.jpg/";
 import vk from "../../../../assets/vk.svg";
 import pinterest from "../../../../assets/pinterest.svg";
 
