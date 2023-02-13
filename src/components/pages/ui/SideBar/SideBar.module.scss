@@ -22,17 +22,26 @@
   @apply flex justify-center w-[260px] gap-8 m-0 p-0 mt-5 pb-8 border-b-[1px] border-[#1C1C1C] mb-6;
 }
 
+.el {
+  @apply transition-opacity;
+  &:hover {
+    @apply opacity-40 cursor-pointer;
+  }
+}
+
 .description {
   @apply max-w-[260px] m-0 p-0 mb-6 text-center text-base pb-8 border-b-[1px] border-[#1C1C1C];
 }
 
 .buttons {
   @apply flex justify-center gap-5;
-  // @apply bg-[#3137C9];
 }
 
 .button {
-  @apply bg-[#3137C9] w-[120px] h-[40px] rounded-full font-medium text-sm text-center;
+  @apply bg-[#3137C9] w-[120px] h-[40px] rounded-full font-medium text-sm text-center transition-opacity;
+  &:hover {
+    @apply opacity-40 cursor-pointer;
+  }
   &:first-of-type {
     @apply bg-[#ED3024];
   }
