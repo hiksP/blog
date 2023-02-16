@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { routes } = require("./routes/routes");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 
 const DB_URL =
   "mongodb+srv://hiksvalp:3hQ-DnT-bqL-L4N@cluster0.kmme2gv.mongodb.net/?retryWrites=true&w=majority";
@@ -9,6 +10,7 @@ const DB_URL =
 const PORT = 5000;
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
