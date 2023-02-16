@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { routes } = require("./routes/routes");
+const fileUpload = require("express-fileupload");
 
 const DB_URL =
   "mongodb+srv://hiksvalp:3hQ-DnT-bqL-L4N@cluster0.kmme2gv.mongodb.net/?retryWrites=true&w=majority";
@@ -14,6 +15,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.status(200).json("Hel");
 });
+app.use(express.static("static"));
+app.use(fileUpload());
 app.use(routes);
 
 async function startApp() {

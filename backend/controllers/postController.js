@@ -3,7 +3,7 @@ const PostService = require("../Services/postService.js");
 
 exports.createPost = async (req, res, next) => {
   try {
-    const post = await PostService.createPost(req.body);
+    const post = await PostService.createPost(req.body, req.files);
     res.json(post);
   } catch (e) {
     res.status(500).json(e);
