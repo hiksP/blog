@@ -5,6 +5,7 @@ const PostScheme = new mongoose.Schema({
   brief: { type: String },
   content: { type: String, required: true },
   picture: { type: String },
+  date: { type: Date, required: true, default: Date.now },
 });
 
 exports.Post = mongoose.model("Post", PostScheme);

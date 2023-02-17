@@ -8,6 +8,7 @@ import Postmaker from "./ui/Postmaker/Postmaker";
 import SideBar from "./ui/SideBar/SideBar";
 import Stories from "./ui/Stories/Stories";
 import { useQuery } from "@tanstack/react-query";
+import Loader from "./ui/Loader/Loader";
 
 const Home: FC = () => {
   const {
@@ -16,16 +17,20 @@ const Home: FC = () => {
     isLoading,
   } = useQuery(["posts"], () => PostService.getPosts());
 
-  console.log(posts);
-
   return (
     <>
       <SideBar></SideBar>
       <Header></Header>
-      <div className={styles.layout}>
+      <div id={"layout"} className={styles.layout}>
         <Postmaker></Postmaker>
         <ul className={styles.list}>
-          <Post></Post>
+          {isLoading ? (
+            <Loader></Loader>
+          ) : posts?.length ? (
+            posts.map((post) => <Post post={post} key={post._id}></Post>)
+          ) : (
+            <div>No posts</div>
+          )}
         </ul>
       </div>
     </>

@@ -1,9 +1,9 @@
 .article {
-  @apply bg-[#202020] w-[600px] flex flex-col;
+  @apply bg-[#202020] w-[600px] flex flex-col mb-9;
 }
 
 .image {
-  @apply mb-7;
+  @apply mb-7 max-h-80 object-contain;
 }
 
 .text {
