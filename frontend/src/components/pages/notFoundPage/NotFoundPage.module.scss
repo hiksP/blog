@@ -1,0 +1,23 @@
+.main {
+  @apply flex my-0 mx-auto items-center flex-col;
+}
+
+.container {
+  @apply flex flex-col items-center mt-[25vh];
+}
+
+.title {
+  @apply text-[220px] text-[#FF7A00] text-center m-0 p-0 mb-1;
+  text-shadow: 4px 4px 1px white;
+}
+
+.text {
+  @apply text-2xl mt-32 mb-4 text-[#B1A18D];
+}
+
+.link {
+  @apply text-[#ff7a00] text-base font-bold transition-opacity;
+  &:hover {
+    @apply opacity-40 cursor-pointer;
+  }
+}
