@@ -4,8 +4,9 @@ import styles from "./Button.module.scss";
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const Button: FC<PropsWithChildren<IButton>> = ({ children, ...rest }) => {
+  const isWorks = window.location.pathname === "/works";
   return (
-    <button className={styles.button} {...rest}>
+    <button className={isWorks ? styles.works : styles.button} {...rest}>
       {children}
     </button>
   );

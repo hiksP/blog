@@ -1,0 +1,31 @@
+.article {
+  @apply flex flex-row bg-[#202020] w-[600px] h-[552px] justify-between;
+}
+
+.image {
+  @apply h-full object-contain;
+}
+
+.container {
+  @apply w-1/2 h-full flex flex-col justify-center items-center px-5;
+}
+
+.title {
+  @apply text-2xl mb-8 font-medium;
+}
+
+.text {
+  @apply text-base text-[#D2D2D2] text-center font-light mb-7;
+}
+
+.tags {
+  @apply flex flex-row justify-start gap-2 mb-20;
+}
+
+.tag {
+  @apply w-full px-1 rounded whitespace-nowrap bg-[#EA8C1E] h-[26px];
+}
+
+.link {
+  @apply ml-[140px] pt-10;
+}

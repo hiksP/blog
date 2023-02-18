@@ -1,0 +1,7 @@
+.title {
+  @apply text-center text-2xl font-semibold;
+}
+
+.list {
+  @apply flex flex-col justify-center items-center mt-8;
+}

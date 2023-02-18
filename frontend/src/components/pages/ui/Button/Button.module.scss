@@ -4,3 +4,10 @@
     @apply opacity-40 cursor-pointer;
   }
 }
+
+.works {
+  @apply text-center bg-[#3137C9] h-[30px] w-[120px] mb-5 text-xs rounded-sm transition-opacity;
+  &:hover {
+    @apply opacity-40 cursor-pointer;
+  }
+}

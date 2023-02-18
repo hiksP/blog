@@ -15,6 +15,7 @@ const Auth: FC = () => {
         <form className={styles.form}>
           <Input placeholder="Email"></Input>
           <Input placeholder="Пароль"></Input>
+          {!isLogin ? <Input placeholder="Имя"></Input> : null}
           <Button type="submit">
             {isLogin ? "Войти" : "Зарегестрироваться"}
           </Button>
