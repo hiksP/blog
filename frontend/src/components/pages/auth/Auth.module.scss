@@ -1,0 +1,35 @@
+.auth {
+  @apply flex flex-col mx-auto mt-28 justify-center;
+}
+
+.title {
+  @apply text-white text-2xl mx-auto mb-14;
+}
+
+.form {
+  @apply flex flex-col items-center w-[300px];
+}
+
+.input {
+  @apply h-[20px] w-full pb-3 mb-6 text-base;
+  border-bottom: solid;
+  border-color: #3f3f3f;
+  border-width: 1px;
+  &:focus {
+    @apply border-[#107EFF];
+  }
+}
+
+.button {
+  @apply bg-[#3137C9] h-9 w-2/4 mb-5 text-center text-xs rounded-md transition-opacity;
+  &:hover {
+    @apply opacity-40 cursor-pointer;
+  }
+}
+
+.link {
+  @apply text-center text-base transition-opacity;
+  &:hover {
+    @apply opacity-40 cursor-pointer;
+  }
+}

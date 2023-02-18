@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const NotFoundPage: FC = () => {
   return (
-    <section className={styles.main}>
+    <section className={styles.notFound}>
       <div className={styles.container}>
         <h2 className={styles.title}>404</h2>
         <p className={styles.text}>Ничего не найдено!</p>

@@ -1,4 +1,4 @@
-.main {
+.notFound {
   @apply flex my-0 mx-auto items-center flex-col;
 }
 
@@ -12,11 +12,11 @@
 }
 
 .text {
-  @apply text-2xl mt-32 mb-4 text-[#B1A18D];
+  @apply text-2xl mt-32 mb-4 text-center text-[#B1A18D];
 }
 
 .link {
-  @apply text-[#ff7a00] text-base font-bold transition-opacity;
+  @apply text-[#ff7a00] text-base font-bold text-center transition-opacity;
   &:hover {
     @apply opacity-40 cursor-pointer;
   }

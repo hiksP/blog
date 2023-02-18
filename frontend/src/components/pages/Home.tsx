@@ -9,6 +9,7 @@ import SideBar from "./ui/SideBar/SideBar";
 import Stories from "./ui/Stories/Stories";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "./ui/Loader/Loader";
+import Layout from "./ui/Layout/Layout";
 
 const Home: FC = () => {
   const {
@@ -18,22 +19,18 @@ const Home: FC = () => {
   } = useQuery(["posts"], () => PostService.getPosts());
 
   return (
-    <>
-      <SideBar></SideBar>
-      <Header></Header>
-      <div id={"layout"} className={styles.layout}>
-        <Postmaker></Postmaker>
-        <ul className={styles.list}>
-          {isLoading ? (
-            <Loader></Loader>
-          ) : posts?.length ? (
-            posts.map((post) => <Post post={post} key={post._id}></Post>)
-          ) : (
-            <div>No posts</div>
-          )}
-        </ul>
-      </div>
-    </>
+    <Layout>
+      <Postmaker></Postmaker>
+      <ul className={styles.list}>
+        {isLoading ? (
+          <Loader></Loader>
+        ) : posts?.length ? (
+          posts.map((post) => <Post post={post} key={post._id}></Post>)
+        ) : (
+          <div>No posts</div>
+        )}
+      </ul>
+    </Layout>
   );
 };
 

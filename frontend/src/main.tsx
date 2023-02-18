@@ -13,6 +13,7 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 import NotFoundPage from "./components/pages/notFoundPage/NotFoundPage";
+import Auth from "./components/pages/auth/Auth";
 
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
@@ -20,6 +21,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home></Home>} />
+        <Route path="/login" element={<Auth></Auth>} />
+        <Route path="/register" element={<Auth></Auth>} />
         <Route path="*" element={<NotFoundPage></NotFoundPage>} />
       </Routes>
     </BrowserRouter>
