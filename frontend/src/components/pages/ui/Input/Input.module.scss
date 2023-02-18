@@ -1,0 +1,9 @@
+.input {
+  @apply h-[20px] w-full pb-3 mb-6 text-base;
+  border-bottom: solid;
+  border-color: #3f3f3f;
+  border-width: 1px;
+  &:focus {
+    @apply border-[#107EFF];
+  }
+}
