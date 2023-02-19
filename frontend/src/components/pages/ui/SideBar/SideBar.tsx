@@ -6,6 +6,7 @@ import steve from "../../../../assets/steve.jpg";
 import vk from "../../../../assets/vk.svg";
 import pinterest from "../../../../assets/pinterest.svg";
 import ContactPopup from "../ContactPopup/ContactPopup";
+import { Link } from "react-router-dom";
 
 const SideBar: FC = () => {
   const [isContactPopupOpened, setContactPopupOpened] = useState(false);
@@ -27,13 +28,21 @@ const SideBar: FC = () => {
           <h2 className={styles.name}>Петр Плавских</h2>
           <p className={styles.brief}>Блог не разработчика</p>
           <ul className={styles.socials}>
-            <a className={styles.el}>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              className={styles.el}
+            >
               <img src={inst} />
             </a>
-            <a className={styles.el}>
+            <a href="https://vk.com/" target="_blank" className={styles.el}>
               <img src={vk} />
             </a>
-            <a className={styles.el}>
+            <a
+              href="https://ru.pinterest.com/"
+              target="_blank"
+              className={styles.el}
+            >
               <img src={pinterest} />
             </a>
           </ul>
@@ -41,7 +50,9 @@ const SideBar: FC = () => {
             (НЕ)Front-end разработчик. Но надеюсь, когда-нибудь им стать.
           </p>
           <div className={styles.buttons}>
-            <button className={styles.button}>Мои работы</button>
+            <Link to="/works">
+              <button className={styles.button}>Мои работы</button>
+            </Link>
             <button onClick={openPopup} className={styles.button}>
               Написать мне
             </button>

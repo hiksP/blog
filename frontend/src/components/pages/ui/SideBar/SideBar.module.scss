@@ -42,7 +42,7 @@
   &:hover {
     @apply opacity-40 cursor-pointer;
   }
-  &:first-of-type {
+  &:first-child {
     @apply bg-[#ED3024];
   }
 }
