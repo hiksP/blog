@@ -1,0 +1,23 @@
+.otherArticles {
+  @apply text-lg font-medium mb-6;
+}
+
+.links {
+  @apply flex justify-between pb-7 mb-7 items-center w-full;
+  border-bottom: solid #3f3f3f 1px;
+}
+
+.col {
+  @apply flex flex-col gap-8;
+}
+
+.link {
+  @apply text-[#F3EBA2] text-base font-medium transition-opacity;
+  &:hover {
+    @apply cursor-pointer opacity-40;
+  }
+}
+
+.date {
+  @apply text-[#828282] text-xs;
+}
