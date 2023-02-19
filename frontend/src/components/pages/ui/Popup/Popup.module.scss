@@ -1,0 +1,14 @@
+.popup {
+  @apply fixed flex items-center flex-col invisible justify-center w-full h-full bg-black bg-opacity-50 top-0 left-0 right-0 bottom-0 opacity-0 transition-all z-0;
+}
+
+.opened {
+  @apply visible opacity-100 z-10;
+}
+
+.close {
+  @apply w-[20px] h-[20px] bg-cancel relative top-[35px] left-[220px] transition-opacity;
+  &:hover {
+    @apply cursor-pointer opacity-40;
+  }
+}

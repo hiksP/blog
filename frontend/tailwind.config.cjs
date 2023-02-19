@@ -3,7 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js, tsx, jsx, ts}"],
   mode: "jit",
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        cancel: "url('./src/assets/cancel.svg')",
+      },
+    },
   },
   plugins: [],
 };
