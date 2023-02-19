@@ -28,7 +28,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Route path="/register" element={<Auth></Auth>} />
         <Route path="/profile" element={<Profile></Profile>} />
         <Route path="/works" element={<Works></Works>} />
-        <Route path="/article" element={<Article></Article>} />
+        <Route path="/:id" element={<Article></Article>} />
         <Route path="*" element={<NotFoundPage></NotFoundPage>} />
       </Routes>
     </BrowserRouter>

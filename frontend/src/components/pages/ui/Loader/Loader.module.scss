@@ -1,5 +1,5 @@
 .loader {
-  @apply mt-[31vh] inline-block relative w-[80px] h-[80px];
+  @apply inline-block relative w-[80px] h-[80px];
 }
 .loader div {
   @apply absolute border-[4px] border-solid border-white opacity-[1] rounded-[50%];

@@ -1,9 +1,9 @@
 .article {
-  @apply bg-[#202020] mb-20 rounded-md flex flex-col mx-auto justify-center px-7 w-[700px] h-full;
+  @apply bg-[#202020] mb-20 rounded-md min-h-[300px] flex flex-col mx-auto justify-center px-7 w-[700px] h-full;
 }
 
-.share {
-  @apply w-[32px] m-0;
+.loading {
+  @apply items-center;
 }
 
 .container {
@@ -12,7 +12,15 @@
 }
 
 .buttons {
-  @apply flex flex-row-reverse mt-4;
+  @apply flex flex-row-reverse items-center mt-4;
+}
+
+.share {
+  @apply w-[32px] h-[32px] m-0;
+}
+
+.topText {
+  @apply mr-2 text-xs opacity-60 text-center font-normal;
 }
 
 .title {

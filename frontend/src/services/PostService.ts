@@ -8,4 +8,9 @@ export const PostService = {
     const { data } = await axios.get<IPost[]>("/posts");
     return data;
   },
+
+  async getPost(id: string) {
+    const { data } = await axios.get<IPost>(`/posts${id}`);
+    return data;
+  },
 };

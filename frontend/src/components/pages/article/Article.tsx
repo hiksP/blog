@@ -6,6 +6,11 @@ import styles from "./Article.module.scss";
 import image from "../../../assets/image.svg";
 import ColumnToRead from "../ui/ColumnToRead/ColumnToRead";
 import CommentSection from "../ui/CommentSection/CommentSection";
+import { useQuery } from "@tanstack/react-query";
+import { PostService } from "../../../services/PostService";
+import dateFormat from "dateformat";
+import axios from "axios";
+import Loader from "../ui/Loader/Loader";
 
 const Article: FC = () => {
   useEffect(() => {
@@ -21,43 +26,44 @@ const Article: FC = () => {
     };
   }, []);
 
+  const {
+    data: post,
+    error,
+    isLoading,
+  } = useQuery(["post"], () => PostService.getPost(window.location.pathname));
+
   return (
     <Layout>
-      <section className={styles.article}>
-        <div className={styles.container}>
-          <div className={styles.buttons}>
-            <div
-              className={`ya-share2 ${styles.share}`}
-              data-curtain
-              data-shape="round"
-              data-limit="0"
-              data-more-button-type="short"
-              data-services="vkontakte,telegram,whatsapp,linkedin"
-            ></div>
+      {isLoading ? (
+        <section className={`${styles.article} ${styles.loading}`}>
+          <Loader></Loader>
+        </section>
+      ) : (
+        <section className={styles.article}>
+          <div className={styles.container}>
+            <div className={styles.buttons}>
+              <div
+                className={`ya-share2 ${styles.share}`}
+                data-curtain
+                data-shape="round"
+                data-limit="0"
+                data-more-button-type="short"
+                data-services="vkontakte,telegram,whatsapp,linkedin"
+              ></div>
+              <p className={styles.topText}>поделиться</p>
+            </div>
+            <h2 className={styles.title}>{post?.title}</h2>
+            <p className={styles.date}>{dateFormat(post?.date, "d.mm.yyyy")}</p>
+            <img
+              src={`${axios.defaults.baseURL}/${post?.picture}`}
+              className={styles.image}
+            ></img>
+            <p className={styles.text}>{post?.content}</p>
           </div>
-          <h2 className={styles.title}>Как создавать сайты легко</h2>
-          <p className={styles.date}>21.06.2020</p>
-          <img src={image} className={styles.image}></img>
-          <p className={styles.text}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
-            volutpat orci turpis urna. Et vestibulum, posuere tortor lacinia
-            sit. Sagittis porttitor orci auctor in at tincidunt arcu egestas.
-            Fusce arcu sodales lacinia eu auctor nunc nam id. Diam sit sed
-            volutpat massa. Egestas ornare vel volutpat. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit. Elementum volutpat orci turpis
-            urna. Et vestibulum, posuere tortor lacinia sit. Sagittis porttitor
-            orci auctor in at tincidunt arcu egestas. Fusce arcu sodales lacinia
-            eu auctor nunc nam id. Diam sit sed volutpat massa. Egestas ornare
-            vel volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Elementum volutpat orci turpis urna. Et vestibulum, posuere
-            tortor lacinia sit. Sagittis porttitor orci auctor in at tincidunt
-            arcu egestas. Fusce arcu sodales lacinia eu auctor nunc nam id. Diam
-            sit sed volutpat massa. Egestas ornare vel volutpat.
-          </p>
-        </div>
-        <ColumnToRead></ColumnToRead>
-        <CommentSection></CommentSection>
-      </section>
+          <ColumnToRead></ColumnToRead>
+          <CommentSection></CommentSection>
+        </section>
+      )}
     </Layout>
   );
 };

@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from "./Post.module.scss";
 import dateFormat, { masks } from "dateformat";
 import { IPost } from "../../../../types/post.interface";
+import { Link } from "react-router-dom";
 
 const Post: FC<{ post: IPost }> = ({ post }) => {
   function hideDescription(text: string, count: number) {
@@ -22,7 +23,9 @@ const Post: FC<{ post: IPost }> = ({ post }) => {
       </div>
       <div className={styles.info}>
         <p className={styles.date}>{dateFormat(post.date, "d.mm.yyyy")}</p>
-        <a className={styles.link}>Читать</a>
+        <Link to={`${post._id}`} className={styles.link}>
+          Читать
+        </Link>
       </div>
     </article>
   );
