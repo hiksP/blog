@@ -18,13 +18,13 @@ class MailService {
 
   async sendActivationMail(to, link) {
     await this.transporter.sendMail({
-      from: '"The Idea project" <blogtestovich@mail.ru>',
-      to: to,
+      from: "blogtestovich@mail.ru",
+      to,
       subject: "Активация аккаунта на " + process.env.API_URL,
       text: "",
       html: `
         <div>
-          <h1>Для активации перейдите по сылке</h1>
+          <h1>Для активации перейдите по сcылке</h1>
           <a href="${link}">${link}</a>
         </div>
       `,

@@ -5,6 +5,7 @@ const { routes } = require("./routes/routes");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const { errorMiddleware } = require("./middlewares/errorMiddleware");
 
 const DB_URL = process.env.DB;
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 app.use(express.static("static"));
 app.use(fileUpload());
 app.use(routes);
+app.use(errorMiddleware);
 
 async function startApp() {
   try {

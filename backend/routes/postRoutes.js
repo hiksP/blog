@@ -5,12 +5,13 @@ const {
   getPost,
   deletePost,
 } = require("../controllers/postController");
+const auth = require("../middlewares/auth");
 
 const postRoutes = express.Router();
 
-postRoutes.post("/posts", createPost);
+postRoutes.post("/posts", auth, createPost);
 postRoutes.get("/posts", getAll);
 postRoutes.get("/posts/:id", getPost);
-postRoutes.delete("/posts/:id", deletePost);
+postRoutes.delete("/posts/:id", auth, deletePost);
 
 exports.postRoutes = postRoutes;

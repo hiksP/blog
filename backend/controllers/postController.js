@@ -5,7 +5,7 @@ exports.createPost = async (req, res, next) => {
     const post = await PostService.createPost(req.body, req.files);
     res.json(post);
   } catch (e) {
-    res.status(500).json(e);
+    next(e);
   }
 };
 
@@ -14,7 +14,7 @@ exports.getAll = async (req, res, next) => {
     const posts = await PostService.getAll();
     return res.json(posts);
   } catch (e) {
-    res.status(500).json(e);
+    next(e);
   }
 };
 
@@ -23,7 +23,7 @@ exports.getPost = async (req, res, next) => {
     const post = await PostService.getPost(req.params.id);
     return res.json(post);
   } catch (e) {
-    res.status(500).json(e.message);
+    next(e);
   }
 };
 
@@ -32,6 +32,6 @@ exports.deletePost = async (req, res, next) => {
     const post = await PostService.deletePost(req.params.id);
     return res.json(post);
   } catch (e) {
-    res.status(500).json(e.message);
+    next(e);
   }
 };

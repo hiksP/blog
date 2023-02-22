@@ -5,15 +5,29 @@ const {
   logout,
   activate,
   refresh,
+  getMe,
+  updateMe,
 } = require("../controllers/userController");
+const { body } = require("express-validator");
+const auth = require("../middlewares/auth");
 
 const userRoutes = express.Router();
 
-userRoutes.post("/signup", registration);
+userRoutes.post(
+  "/signup",
+  body("email").isEmail(),
+  body("password").isLength({ min: 3, max: 32 }),
+  body("name").isLength({ min: 2 }),
+  registration
+);
 
 userRoutes.post("/signin", login);
 
 userRoutes.post("/signout", logout);
+
+userRoutes.get("/users/me", auth, getMe);
+
+userRoutes.patch("/users/me", auth, updateMe);
 
 userRoutes.get("/activate/:link", activate);
 
