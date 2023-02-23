@@ -27,6 +27,7 @@ exports.registration = async (req, res, next) => {
     }
   }
 };
+
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -101,6 +102,30 @@ exports.updateMe = async (req, res, next) => {
     });
     return res.json(userData);
   } catch (e) {
+    if (e.name === "ValidationError" || e.name === "CastError") {
+      next(new WrongReqErorr("Переданы некорректные данные"));
+    } else if (e.codeName === "DuplicateKey") {
+      next(new CreatedUserError("Пользователь с такими данными уже есть"));
+    }
     next(e);
+  }
+};
+
+exports.updateAvatar = async (req, res, next) => {
+  try {
+    const { avatar } = req.body;
+    const { refreshToken } = req.cookies;
+    const userData = await userService.updateAvatar(refreshToken, avatar);
+    res.cookie("refreshToken", userData.refreshToken, {
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+      httpOnly: true,
+    });
+    return res.json(userData);
+  } catch (e) {
+    if (e.name === "ValidationError" || e.name === "CastError") {
+      next(new WrongReqErorr("Переданы некорректные данные"));
+    } else {
+      next(e);
+    }
   }
 };
