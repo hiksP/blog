@@ -1,16 +1,25 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../../../main";
 import styles from "./Navigation.module.scss";
 
 const Navigation: FC = () => {
+  const { store } = useContext(Context);
+
+  const logoutHandler = () => {
+    if (store.isAuth) {
+      store.logout();
+    }
+  };
+
   return (
     <nav className={styles.nav}>
       <ul className={styles.firstUl}>
         <Link to="/">
           <li className={styles.el}>Главная</li>
         </Link>
-        <Link to="/login">
-          <li className={styles.el}>Войти</li>
+        <Link to={store.isAuth ? "/" : "/login"} onClick={logoutHandler}>
+          <li className={styles.el}>{store.isAuth ? "Выйти" : "Войти"}</li>
         </Link>
       </ul>
       <ul className={styles.secondUl}>

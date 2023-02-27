@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { PostService } from "../../services/PostService";
 import { IPost } from "../../types/post.interface";
 import Header from "./header/Header";
@@ -10,8 +10,18 @@ import Stories from "./ui/Stories/Stories";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "./ui/Loader/Loader";
 import Layout from "./ui/Layout/Layout";
+import { Context } from "../../main";
+import { observer } from "mobx-react-lite";
 
 const Home: FC = () => {
+  const { store } = useContext(Context);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      store.checkAuth();
+    }
+  }, []);
+
   const {
     data: posts,
     error,
@@ -34,4 +44,4 @@ const Home: FC = () => {
   );
 };
 
-export default Home;
+export default observer(Home);

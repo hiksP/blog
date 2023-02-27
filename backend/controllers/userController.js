@@ -85,7 +85,7 @@ exports.getMe = async (req, res, next) => {
       maxAge: 30 * 24 * 60 * 60 * 1000,
       httpOnly: true,
     });
-    return res.json(userData);
+    return res.json(userData.user);
   } catch (e) {
     next(e);
   }
@@ -100,7 +100,7 @@ exports.updateMe = async (req, res, next) => {
       maxAge: 30 * 24 * 60 * 60 * 1000,
       httpOnly: true,
     });
-    return res.json(userData);
+    return res.json(userData.user);
   } catch (e) {
     if (e.name === "ValidationError" || e.name === "CastError") {
       next(new WrongReqErorr("Переданы некорректные данные"));
@@ -120,7 +120,7 @@ exports.updateAvatar = async (req, res, next) => {
       maxAge: 30 * 24 * 60 * 60 * 1000,
       httpOnly: true,
     });
-    return res.json(userData);
+    return res.json(userData.user);
   } catch (e) {
     if (e.name === "ValidationError" || e.name === "CastError") {
       next(new WrongReqErorr("Переданы некорректные данные"));
