@@ -11,26 +11,29 @@ import { PostService } from "../../../services/PostService";
 import dateFormat from "dateformat";
 import axios from "axios";
 import Loader from "../ui/Loader/Loader";
+import $api from "../../../http";
 
 const Article: FC = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-
-    script.src = "https://yastatic.net/share2/share.js";
-    script.async = true;
-
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   const {
     data: post,
     error,
     isLoading,
   } = useQuery(["post"], () => PostService.getPost(window.location.pathname));
+
+  useEffect(() => {
+    if (!isLoading) {
+      const script = document.createElement("script");
+
+      script.src = "https://yastatic.net/share2/share.js";
+      script.async = true;
+
+      document.body.appendChild(script);
+
+      return () => {
+        document.body.removeChild(script);
+      };
+    }
+  }, [isLoading]);
 
   return (
     <Layout>
@@ -55,7 +58,7 @@ const Article: FC = () => {
             <h2 className={styles.title}>{post?.title}</h2>
             <p className={styles.date}>{dateFormat(post?.date, "d.mm.yyyy")}</p>
             <img
-              src={`${axios.defaults.baseURL}/${post?.picture}`}
+              src={`${$api.defaults.baseURL}/${post?.picture}`}
               className={styles.image}
             ></img>
             <p className={styles.text}>{post?.content}</p>

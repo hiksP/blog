@@ -4,6 +4,7 @@ import { AuthService } from "../services/AuthService";
 import axios from "axios";
 import { authResponse } from "../types/authResponse.interface";
 import { API_URL } from "../http";
+import { NavigateFunction } from "react-router-dom";
 
 export default class Store {
   user = {} as IUser;
@@ -21,25 +22,32 @@ export default class Store {
     this.user = user;
   }
 
-  async login(email: string, password: string) {
+  async login(email: string, password: string, navigate: NavigateFunction) {
     try {
       const response = await AuthService.signin(email, password);
       console.log(response);
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
+      navigate("/");
     } catch (e) {
       console.log(e.response?.data?.message);
     }
   }
 
-  async register(email: string, password: string, name: string) {
+  async register(
+    email: string,
+    password: string,
+    name: string,
+    navigate: NavigateFunction
+  ) {
     try {
       const response = await AuthService.signup(email, password, name);
       console.log(response);
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
+      navigate("/signin");
     } catch (e) {
       console.log(e.response?.data?.message);
     }

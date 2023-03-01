@@ -12,21 +12,31 @@ import Layout from "../ui/Layout/Layout";
 import Input from "../ui/Input/Input";
 import Button from "../ui/Button/Button";
 import { Context } from "../../../main";
-import { observer } from "mobx-react-lite";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { ISign } from "../../../types/sign.interface";
+import Authinput, { FormValues } from "../ui/Input/Authinput";
+import AuthError from "../ui/Error/AuthError";
+import { useNavigate } from "react-router-dom";
 
 const Auth: FC = () => {
   const isLogin = window.location.pathname === "/login";
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [name, setName] = useState<string>("");
+  const { handleSubmit, formState, control } = useForm<FormValues>({
+    defaultValues: {
+      Email: "",
+      Password: "",
+      Name: "",
+    },
+    mode: "onChange",
+  });
+
+  const navigate = useNavigate();
 
   const { store } = useContext(Context);
-  const authFunction = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
+  const onSubmit = (data: FormValues) => {
     if (isLogin) {
-      store.login(email, password);
+      store.login(data.Email, data.Password, navigate);
     } else {
-      store.register(email, password, name);
+      store.register(data.Email, data.Password, data.Name, navigate);
     }
   };
 
@@ -34,28 +44,51 @@ const Auth: FC = () => {
     <Layout>
       <section className={styles.auth}>
         <h2 className={styles.title}>{isLogin ? "Вход" : "Регистрация"}</h2>
-        <form className={styles.form}>
-          <Input
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            type="text"
-            placeholder="Email"
-          ></Input>
-          <Input
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            type="text"
-            placeholder="Пароль"
-          ></Input>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+          <Authinput
+            control={control}
+            name="Email"
+            rules={{
+              required: "Вы пропустили Email",
+              pattern: {
+                value:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: "Введите верный Email",
+              },
+            }}
+          ></Authinput>
+          {formState.errors.Email && (
+            <AuthError>{formState.errors.Email.message}</AuthError>
+          )}
+          <Authinput
+            control={control}
+            name="Password"
+            rules={{
+              required: "Вы пропустили пароль",
+              minLength: {
+                value: 3,
+                message: "Минимальная длина пароля - 3",
+              },
+              maxLength: {
+                value: 32,
+                message: "Максимальная длина пароля - 32",
+              },
+            }}
+          ></Authinput>
+          {formState.errors.Password && (
+            <AuthError>{formState.errors.Password.message}</AuthError>
+          )}
           {!isLogin ? (
-            <Input
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              type="text"
-              placeholder="Имя"
-            ></Input>
+            <Authinput
+              control={control}
+              name="Name"
+              rules={{ required: "Вы пропустили имя" }}
+            ></Authinput>
           ) : null}
-          <Button onClick={(e) => authFunction(e)} type="submit">
+          {formState.errors.Name && (
+            <AuthError>{formState.errors.Name.message}</AuthError>
+          )}
+          <Button disabled={!formState.isValid} type="submit">
             {isLogin ? "Войти" : "Зарегестрироваться"}
           </Button>
         </form>
