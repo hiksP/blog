@@ -23,7 +23,7 @@ const Post: FC<{ post: IPost }> = ({ post }) => {
       </div>
       <div className={styles.info}>
         <p className={styles.date}>{dateFormat(post.date, "d.mm.yyyy")}</p>
-        <Link to={`${post._id}`} className={styles.link}>
+        <Link to={`id/${post._id}`} className={styles.link}>
           Читать
         </Link>
       </div>

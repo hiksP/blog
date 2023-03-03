@@ -16,12 +16,6 @@ import { observer } from "mobx-react-lite";
 const Home: FC = () => {
   const { store } = useContext(Context);
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      store.checkAuth();
-    }
-  }, []);
-
   const {
     data: posts,
     error,

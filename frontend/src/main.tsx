@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Home from "./components/pages/Home";
@@ -19,6 +19,8 @@ import Works from "./components/pages/Works/Works";
 import Article from "./components/pages/article/Article";
 import Store from "./store/store";
 import { State } from "./types/state.interface";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import App from "./app";
 
 const queryClient = new QueryClient();
 const store = new Store();
@@ -30,15 +32,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <QueryClientProvider client={queryClient}>
     <Context.Provider value={{ store }}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home></Home>} />
-          <Route path="/login" element={<Auth></Auth>} />
-          <Route path="/register" element={<Auth></Auth>} />
-          <Route path="/profile" element={<Profile></Profile>} />
-          <Route path="/works" element={<Works></Works>} />
-          <Route path="/:id" element={<Article></Article>} />
-          <Route path="*" element={<NotFoundPage></NotFoundPage>} />
-        </Routes>
+        <App></App>
       </BrowserRouter>
     </Context.Provider>
   </QueryClientProvider>

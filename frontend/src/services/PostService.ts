@@ -9,7 +9,7 @@ export const PostService = {
   },
 
   async getPost(id: string) {
-    const { data } = await $api.get<IPost>(`/posts${id}`);
+    const { data } = await $api.get<IPost>(`posts/${id}`);
     return data;
   },
 };

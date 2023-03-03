@@ -6,7 +6,7 @@ import photopost from "../../../../assets/photopost.svg";
 const Postmaker: FC = () => {
   return (
     <section>
-      <div className={styles.container}>
+      <form className={styles.container}>
         <input placeholder="Напишите что-нибудь" className={styles.input} />
         <ul className={styles.buttons}>
           <li className={styles.button}>
@@ -16,7 +16,7 @@ const Postmaker: FC = () => {
             <img className={styles.img} src={textpost} />
           </li>
         </ul>
-      </div>
+      </form>
     </section>
   );
 };

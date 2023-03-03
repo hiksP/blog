@@ -18,7 +18,9 @@ const Article: FC = () => {
     data: post,
     error,
     isLoading,
-  } = useQuery(["post"], () => PostService.getPost(window.location.pathname));
+  } = useQuery(["post"], () =>
+    PostService.getPost(window.location.pathname.match(/\/([^\/]+)\/?$/)[1])
+  );
 
   useEffect(() => {
     if (!isLoading) {

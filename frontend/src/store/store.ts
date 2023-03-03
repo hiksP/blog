@@ -5,13 +5,21 @@ import axios from "axios";
 import { authResponse } from "../types/authResponse.interface";
 import { API_URL } from "../http";
 import { NavigateFunction } from "react-router-dom";
+import { UserService } from "../services/UserService";
 
 export default class Store {
   user = {} as IUser;
   isAuth = false;
+  requestCompleted = false;
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  setLocalStorage(user: IUser) {
+    localStorage.setItem("userName", user.name);
+    localStorage.setItem("Email", user.email);
+    localStorage.setItem("isAuth", JSON.stringify("true"));
   }
 
   setAuth(bool: boolean) {
@@ -29,6 +37,7 @@ export default class Store {
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
+      this.setLocalStorage(response.data.user);
       navigate("/");
     } catch (e) {
       console.log(e.response?.data?.message);
@@ -43,10 +52,10 @@ export default class Store {
   ) {
     try {
       const response = await AuthService.signup(email, password, name);
-      console.log(response);
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
+      this.setLocalStorage(response.data.user);
       navigate("/signin");
     } catch (e) {
       console.log(e.response?.data?.message);
@@ -72,6 +81,27 @@ export default class Store {
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
+      this.requestCompleted = true;
+    } catch (e) {
+      console.log(e.response?.data?.message);
+    }
+  }
+
+  async updateAvatar(url: string) {
+    try {
+      const response = await UserService.updateAvatar(url);
+      this.setUser(response.data);
+      this.setLocalStorage(response.data);
+    } catch (e) {
+      console.log(e.response?.data?.message);
+    }
+  }
+
+  async patchUser(email: string, name: string) {
+    try {
+      const response = await UserService.updateMe(email, name);
+      this.setUser(response.data);
+      this.setLocalStorage(response.data);
     } catch (e) {
       console.log(e.response?.data?.message);
     }
