@@ -1,5 +1,8 @@
 .title {
   @apply text-white text-2xl mb-14;
+  @media (max-width: 900px) {
+    @apply text-xl;
+  }
 }
 
 .container {
@@ -8,14 +11,24 @@
 
 .form {
   @apply flex flex-col w-[600px];
+  @media (max-width: 1550px) {
+    @apply w-[350px];
+  }
+
+  @media (max-width: 1100px) {
+    @apply w-[270px];
+  }
 }
 
 .avatar {
-  @apply flex mr-40 flex-col;
+  @apply flex mr-5 flex-col;
 }
 
 .image {
   @apply w-[200px] h-[200px] mb-4 object-contain;
+  @media (max-width: 1100px) {
+    @apply w-[150px] h-[150px];
+  }
 }
 
 .choose {

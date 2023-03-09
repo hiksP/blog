@@ -9,7 +9,7 @@ class FileService {
       file.picture.mv(filePath);
       return fileName;
     } catch (e) {
-      next(e);
+      throw e;
     }
   }
 }

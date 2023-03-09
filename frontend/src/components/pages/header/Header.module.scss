@@ -1,3 +1,6 @@
 .header {
   @apply flex ml-auto relative z-10 w-[calc(100%_-_300px)] pb-9;
+  @media (max-width: 900px) {
+    @apply w-[calc(100%_-_200px)];
+  }
 }

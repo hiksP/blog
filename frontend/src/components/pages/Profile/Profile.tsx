@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import Authinput, { FormValues } from "../ui/Input/Authinput";
 import AvatarPopup from "../ui/AvatarPopoup/AvatarPopup";
 import AuthError from "../ui/Error/AuthError";
+import { observer } from "mobx-react-lite";
 
 const Profile: FC = () => {
   const { store } = useContext(Context);
@@ -89,4 +90,4 @@ const Profile: FC = () => {
   );
 };
 
-export default Profile;
+export default observer(Profile);

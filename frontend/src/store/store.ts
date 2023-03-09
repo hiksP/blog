@@ -19,7 +19,7 @@ export default class Store {
   setLocalStorage(user: IUser) {
     localStorage.setItem("userName", user.name);
     localStorage.setItem("Email", user.email);
-    localStorage.setItem("isAuth", JSON.stringify("true"));
+    localStorage.setItem("isAuth", JSON.stringify(true));
   }
 
   setAuth(bool: boolean) {
@@ -33,10 +33,10 @@ export default class Store {
   async login(email: string, password: string, navigate: NavigateFunction) {
     try {
       const response = await AuthService.signin(email, password);
-      console.log(response);
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
+      console.log(this.user);
       this.setLocalStorage(response.data.user);
       navigate("/");
     } catch (e) {

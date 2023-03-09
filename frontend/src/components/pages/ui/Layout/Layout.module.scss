@@ -1,3 +1,14 @@
 .layout {
   @apply ml-[300px] flex flex-col justify-center my-0 px-28 mr-auto;
+  @media (max-width: 1500px) {
+    @apply px-16;
+  }
+
+  @media (max-width: 1200px) {
+    @apply px-8;
+  }
+
+  @media (max-width: 900px) {
+    @apply px-4 ml-[200px];
+  }
 }

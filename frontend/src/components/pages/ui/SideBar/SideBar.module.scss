@@ -1,5 +1,8 @@
 .sidebar {
   @apply h-screen w-[300px] fixed bg-[#202020];
+  @media (max-width: 900px) {
+    @apply w-[200px];
+  }
 }
 
 .container {
@@ -8,10 +11,16 @@
 
 .photo {
   @apply w-[100px] h-[100px] object-contain border-[2px] border-white rounded-full relative z-20 mt-[-50px];
+  @media (max-width: 900px) {
+    @apply w-[75px] h-[75px];
+  }
 }
 
 .name {
   @apply text-2xl m-0 p-0 mt-5 mb-2 text-center;
+  @media (max-width: 900px) {
+    @apply text-xl;
+  }
 }
 
 .brief {
@@ -20,6 +29,9 @@
 
 .socials {
   @apply flex justify-center w-[260px] gap-8 m-0 p-0 mt-5 pb-8 border-b-[1px] border-[#1C1C1C] mb-6;
+  @media (max-width: 900px) {
+    @apply w-[180px];
+  }
 }
 
 .el {
@@ -31,10 +43,16 @@
 
 .description {
   @apply max-w-[260px] m-0 p-0 mb-6 text-center text-base pb-8 border-b-[1px] border-[#1C1C1C];
+  @media (max-width: 900px) {
+    @apply w-[180px] mb-3 pb-5 text-sm;
+  }
 }
 
 .buttons {
   @apply flex justify-center gap-5;
+  @media (max-width: 900px) {
+    @apply gap-2;
+  }
 }
 
 .button {
@@ -44,5 +62,8 @@
   }
   &:first-child {
     @apply bg-[#ED3024];
+  }
+  @media (max-width: 900px) {
+    @apply w-[85px] h-[30px] text-xs;
   }
 }

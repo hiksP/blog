@@ -10,12 +10,20 @@
   @apply ml-auto mr-6 w-[110px] flex gap-4;
 }
 
+.label {
+  @apply cursor-pointer;
+}
+
+.photo {
+  @apply w-[44px] opacity-0 absolute -z-20;
+}
+
 .button {
   @apply flex items-center justify-center w-[44px] h-[44px] rounded-full bg-[#3137C9] transition-opacity;
   &:hover {
     @apply cursor-pointer opacity-40;
   }
   &:first-of-type {
-    @apply bg-[#EBEBEB];
+    @apply bg-[#EBEBEB] bg-photo bg-center bg-no-repeat;
   }
 }

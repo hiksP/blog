@@ -1,20 +1,59 @@
 import { FC } from "react";
 import styles from "./Postmaker.module.scss";
 import textpost from "../../../../assets/textpost.svg";
-import photopost from "../../../../assets/photopost.svg";
+import { useForm } from "react-hook-form";
+import { PostService } from "../../../../services/PostService";
+
+export type CreatedPost = {
+  title: string;
+  content: string;
+  picture: File;
+  date: Date;
+};
 
 const Postmaker: FC = () => {
+  const {
+    handleSubmit,
+    formState: { errors },
+    register,
+  } = useForm<CreatedPost>({
+    defaultValues: {
+      title: "",
+      content: "",
+    },
+    mode: "onChange",
+  });
+
+  const onSubmit = (data: CreatedPost) => {
+    PostService.createPost(data);
+  };
+
   return (
     <section>
-      <form className={styles.container}>
-        <input placeholder="Напишите что-нибудь" className={styles.input} />
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.container}>
+        <input
+          {...register("title")}
+          placeholder="Название поста"
+          className={styles.input}
+        />
+        <input
+          {...register("content")}
+          placeholder="Текст поста"
+          className={styles.input}
+        />
         <ul className={styles.buttons}>
-          <li className={styles.button}>
-            <img className={styles.img} src={photopost} />
-          </li>
-          <li className={styles.button}>
+          <button className={styles.button}>
+            <label htmlFor="photo" className={styles.label} />
+            <input
+              {...register("picture")}
+              type={"file"}
+              className={styles.photo}
+              id="photo"
+            ></input>
+          </button>
+          <button type="submit" className={styles.button}>
             <img className={styles.img} src={textpost} />
-          </li>
+          </button>
         </ul>
       </form>
     </section>

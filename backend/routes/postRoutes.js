@@ -9,7 +9,7 @@ const auth = require("../middlewares/auth");
 
 const postRoutes = express.Router();
 
-postRoutes.post("/posts", auth, createPost);
+postRoutes.post("/posts", createPost);
 postRoutes.get("/posts", getAll);
 postRoutes.get("/posts/:id", getPost);
 postRoutes.delete("/posts/:id", auth, deletePost);

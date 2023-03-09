@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         cancel: "url('./src/assets/cancel.svg')",
+        photo: "url('./src/assets/photopost.svg')",
       },
     },
   },

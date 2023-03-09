@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import { FC, useContext, useEffect, useState } from "react";
 import {
   createBrowserRouter,
@@ -15,11 +16,17 @@ import NotFoundPage from "./components/pages/notFoundPage/NotFoundPage";
 import Profile from "./components/pages/Profile/Profile";
 import Works from "./components/pages/Works/Works";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import { Context } from "./main";
 
 const App: FC = () => {
-  const [loggedIn, setLoggedIn] = useState(
-    JSON.parse(localStorage.getItem("isAuth"))
-  );
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const { store } = useContext(Context);
+
+  useEffect(() => {
+    store.checkAuth();
+    setLoggedIn(JSON.parse(localStorage.getItem("isAuth")));
+  }, []);
 
   return (
     <Routes>
@@ -42,4 +49,4 @@ const App: FC = () => {
   );
 };
 
-export default App;
+export default observer(App);

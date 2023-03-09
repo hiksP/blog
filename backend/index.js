@@ -20,13 +20,13 @@ app.use(
 );
 
 app.use(express.json());
+app.use(fileUpload());
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.status(200).json("Welcome");
 });
 app.use(express.static("static"));
-app.use(fileUpload());
 app.use(routes);
 app.use(errorMiddleware);
 
