@@ -3,10 +3,17 @@
   @media (max-width: 1100px) {
     @apply w-[500px] mb-7;
   }
+
+  @media (max-width: 780px) {
+    @apply w-[380px] mb-5;
+  }
 }
 
 .image {
   @apply mb-7 max-h-80 object-contain;
+  @media (max-width: 780px) {
+    @apply mb-5 max-h-52;
+  }
 }
 
 .text {

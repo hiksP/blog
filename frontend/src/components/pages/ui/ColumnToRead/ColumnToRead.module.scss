@@ -1,20 +1,32 @@
 .otherArticles {
   @apply text-lg font-medium mb-6;
+  @media (max-width: 1000px) {
+    @apply text-base mb-4;
+  }
 }
 
 .links {
   @apply flex justify-between pb-7 mb-7 items-center w-full;
   border-bottom: solid #3f3f3f 1px;
+  @media (max-width: 1000px) {
+    @apply pb-5 mb-5;
+  }
 }
 
 .col {
   @apply flex flex-col gap-8;
+  @media (max-width: 1000px) {
+    @apply gap-10;
+  }
 }
 
 .link {
   @apply text-[#F3EBA2] text-base font-medium transition-opacity;
   &:hover {
     @apply cursor-pointer opacity-40;
+  }
+  @media (max-width: 1000px) {
+    @apply text-sm;
   }
 }
 

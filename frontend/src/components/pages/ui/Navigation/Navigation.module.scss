@@ -13,10 +13,13 @@ textarea:focus {
 
 .firstUl {
   @apply ml-8 flex flex-row w-[30%] justify-between items-center h-full;
+  @media (max-width: 780px) {
+    @apply ml-2 w-auto;
+  }
 }
 
 .secondUl {
-  @apply flex flex-row w-[50%] items-center justify-end h-full;
+  @apply flex flex-row items-center justify-end h-full;
   @media (max-width: 900px) {
     @apply justify-between;
   }
@@ -33,12 +36,24 @@ textarea:focus {
   @media (max-width: 900px) {
     @apply text-sm;
   }
+  @media (max-width: 700px) {
+    @apply text-xs;
+  }
 }
 
 .box {
   @apply bg-[#202020] flex items-center w-[230px] h-full;
+  @media (max-width: 780px) {
+    @apply w-[190px];
+  }
+  @media (max-width: 700px) {
+    @apply w-[165px];
+  }
 }
 
 .input {
   @apply ml-5 outline-none;
+  @media (max-width: 780px) {
+    @apply ml-2;
+  }
 }

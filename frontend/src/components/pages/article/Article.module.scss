@@ -3,6 +3,12 @@
   @media (max-width: 1100px) {
     @apply w-[600px] min-h-[270px] mb-14 px-6;
   }
+  @media (max-width: 960px) {
+    @apply w-[450px] min-h-[250px] mb-10 px-4;
+  }
+  @media (max-width: 720px) {
+    @apply w-[400px] min-h-[200px] mb-7 px-3;
+  }
 }
 
 .loading {

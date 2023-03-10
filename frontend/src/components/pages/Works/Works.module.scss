@@ -1,5 +1,11 @@
 .title {
   @apply text-center text-2xl font-semibold;
+  @media (max-width: 1040px) {
+    @apply text-xl;
+  }
+  @media (max-width: 750px) {
+    @apply text-lg;
+  }
 }
 
 .list {

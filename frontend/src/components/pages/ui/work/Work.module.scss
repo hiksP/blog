@@ -1,25 +1,49 @@
 .article {
   @apply flex flex-row bg-[#202020] w-[600px] h-[552px] justify-between;
+  @media (max-width: 1040px) {
+    @apply w-[500px];
+  }
+  @media (max-width: 750px) {
+    @apply w-[350px] h-[480px];
+  }
 }
 
 .image {
   @apply h-full object-contain;
+  @media (max-width: 1040px) {
+    @apply w-1/2;
+  }
 }
 
 .container {
   @apply w-1/2 h-full flex flex-col justify-center items-center px-5;
+  @media (max-width: 1040px) {
+    @apply px-2;
+  }
 }
 
 .title {
   @apply text-2xl mb-8 font-medium;
+  @media (max-width: 1040px) {
+    @apply text-xl mb-6;
+  }
+  @media (max-width: 750px) {
+    @apply text-lg mb-4 mt-7;
+  }
 }
 
 .text {
   @apply text-base text-[#D2D2D2] text-center font-light mb-7;
+  @media (max-width: 1040px) {
+    @apply text-sm mb-5;
+  }
 }
 
 .tags {
   @apply flex flex-row justify-start gap-2 mb-20;
+  @media (max-width: 750px) {
+    @apply mb-10 flex-col;
+  }
 }
 
 .tag {
@@ -28,4 +52,10 @@
 
 .link {
   @apply ml-[140px] pt-10;
+  @media (max-width: 1040px) {
+    @apply ml-[100px];
+  }
+  @media (max-width: 750px) {
+    @apply ml-[40px] pt-0;
+  }
 }

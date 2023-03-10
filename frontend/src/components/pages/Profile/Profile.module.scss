@@ -29,6 +29,10 @@
   @media (max-width: 1100px) {
     @apply w-[150px] h-[150px];
   }
+
+  @media (max-width: 800px) {
+    @apply w-[100px] h-[100px];
+  }
 }
 
 .choose {
