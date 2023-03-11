@@ -3,10 +3,16 @@
   @media (max-width: 900px) {
     @apply text-xl;
   }
+  @media (max-width: 400px) {
+    @apply text-center;
+  }
 }
 
 .container {
   @apply flex flex-row justify-between;
+  @media (max-width: 400px) {
+    @apply flex-col-reverse gap-8 justify-center items-center;
+  }
 }
 
 .form {
@@ -17,6 +23,18 @@
 
   @media (max-width: 1100px) {
     @apply w-[270px];
+  }
+
+  @media (max-width: 680px) {
+    @apply w-[350px];
+  }
+
+  @media (max-width: 590px) {
+    @apply w-[260px];
+  }
+
+  @media (max-width: 470px) {
+    @apply w-[200px];
   }
 }
 
@@ -31,6 +49,14 @@
   }
 
   @media (max-width: 800px) {
+    @apply w-[100px] h-[100px];
+  }
+
+  @media (max-width: 680px) {
+    @apply w-[150px] h-[150px];
+  }
+
+  @media (max-width: 590px) {
     @apply w-[100px] h-[100px];
   }
 }

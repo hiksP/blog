@@ -3,6 +3,12 @@
   @media (max-width: 780px) {
     @apply w-[350px];
   }
+  @media (max-width: 510px) {
+    @apply w-[300px];
+  }
+  @media (max-width: 375px) {
+    @apply w-[285px];
+  }
 }
 
 .email {

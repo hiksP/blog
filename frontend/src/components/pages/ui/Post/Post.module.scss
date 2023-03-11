@@ -7,6 +7,18 @@
   @media (max-width: 780px) {
     @apply w-[380px] mb-5;
   }
+
+  @media (max-width: 680px) {
+    @apply w-[450px];
+  }
+
+  @media (max-width: 500px) {
+    @apply w-[350px];
+  }
+
+  @media (max-width: 400px) {
+    @apply w-[285px] mb-9;
+  }
 }
 
 .image {

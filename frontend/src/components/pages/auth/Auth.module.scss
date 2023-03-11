@@ -4,10 +4,16 @@
 
 .title {
   @apply text-white text-2xl mx-auto mb-14;
+  @media (max-width: 400px) {
+    @apply text-xl;
+  }
 }
 
 .form {
   @apply flex flex-col items-center w-[300px];
+  @media (max-width: 400px) {
+    @apply w-[250px];
+  }
 }
 
 .link {

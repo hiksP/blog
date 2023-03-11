@@ -9,6 +9,18 @@
   @media (max-width: 720px) {
     @apply w-[400px] min-h-[200px] mb-7 px-3;
   }
+  @media (max-width: 680px) {
+    @apply w-[500px] min-h-[230px] mb-10 px-4;
+  }
+  @media (max-width: 560px) {
+    @apply w-[400px] min-h-[200px] mb-7 px-4;
+  }
+  @media (max-width: 450px) {
+    @apply w-[340px];
+  }
+  @media (max-width: 380px) {
+    @apply w-[280px] px-2;
+  }
 }
 
 .loading {
@@ -36,6 +48,9 @@
   @apply font-semibold text-2xl;
   @media (max-width: 1100px) {
     @apply text-lg;
+  }
+  @media (max-width: 680px) {
+    @apply text-base;
   }
 }
 

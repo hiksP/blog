@@ -9,10 +9,16 @@
 .title {
   @apply text-[220px] text-[#FF7A00] text-center m-0 p-0 mb-1;
   text-shadow: 4px 4px 1px white;
+  @media (max-width: 400px) {
+    @apply text-[180px];
+  }
 }
 
 .text {
   @apply text-2xl mt-32 mb-4 text-center text-[#B1A18D];
+  @media (max-width: 400px) {
+    @apply text-xl;
+  }
 }
 
 .link {

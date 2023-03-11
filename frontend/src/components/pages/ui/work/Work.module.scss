@@ -6,6 +6,17 @@
   @media (max-width: 750px) {
     @apply w-[350px] h-[480px];
   }
+  @media (max-width: 680px) {
+    @apply w-[450px] h-[552px];
+  }
+
+  @media (max-width: 480px) {
+    @apply w-[320px] h-full;
+  }
+
+  @media (max-width: 350px) {
+    @apply w-[290px] h-full;
+  }
 }
 
 .image {
@@ -13,12 +24,19 @@
   @media (max-width: 1040px) {
     @apply w-1/2;
   }
+  @media (max-width: 480px) {
+    @apply flex self-center;
+  }
 }
 
 .container {
   @apply w-1/2 h-full flex flex-col justify-center items-center px-5;
   @media (max-width: 1040px) {
     @apply px-2;
+  }
+
+  @media (max-width: 350px) {
+    @apply px-1;
   }
 }
 
@@ -29,6 +47,9 @@
   }
   @media (max-width: 750px) {
     @apply text-lg mb-4 mt-7;
+  }
+  @media (max-width: 350px) {
+    @apply text-base;
   }
 }
 
@@ -57,5 +78,9 @@
   }
   @media (max-width: 750px) {
     @apply ml-[40px] pt-0;
+  }
+
+  @media (max-width: 350px) {
+    @apply ml-[15px];
   }
 }
