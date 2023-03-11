@@ -11,4 +11,8 @@
   @media (max-width: 900px) {
     @apply px-4 ml-[200px];
   }
+
+  @media (max-width: 680px) {
+    @apply px-4 ml-0;
+  }
 }

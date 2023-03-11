@@ -31,16 +31,18 @@ const Postmaker: FC = () => {
   return (
     <section>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.container}>
-        <input
-          {...register("title")}
-          placeholder="Название поста"
-          className={styles.input}
-        />
-        <input
-          {...register("content")}
-          placeholder="Текст поста"
-          className={styles.input}
-        />
+        <div className={styles.mobContainer}>
+          <input
+            {...register("title")}
+            placeholder="Название поста"
+            className={styles.input}
+          />
+          <input
+            {...register("content")}
+            placeholder="Текст поста"
+            className={styles.input}
+          />
+        </div>
         <ul className={styles.buttons}>
           <button className={styles.button}>
             <label htmlFor="photo" className={styles.label} />

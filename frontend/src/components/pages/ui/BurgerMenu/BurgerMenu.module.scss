@@ -1,0 +1,57 @@
+.nav {
+  @apply bg-[#0D0D0D] flex w-[100%] items-center h-[50px] justify-between;
+}
+
+.box {
+  @apply bg-[#202020] flex items-center w-[190px] h-full;
+}
+
+.input {
+  @apply ml-2 outline-none;
+}
+
+.button {
+  @apply w-[50px] h-[50px] relative;
+}
+
+.button span {
+  @apply absolute z-10 top-[50%] left-[50%] w-[20px] h-[2px] bg-white mt-[-1px] ml-[-10px];
+  &:before,
+  &:after {
+    @apply content-[''] absolute top-[50%] left-[50%] w-[20px] h-[2px] bg-white mt-[-1px] ml-[-10px] transition-transform;
+  }
+
+  &:before {
+    @apply translate-y-[5px];
+  }
+
+  &:after {
+    @apply translate-y-[-5px];
+  }
+}
+
+.buttonActive span {
+  @apply h-0;
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.blur {
+  @apply w-screen h-screen backdrop-blur-sm fixed right-0 top-0 translate-x-[-100%] transition-transform opacity-30 bg-black;
+}
+
+.blurActive {
+  @apply translate-x-0;
+}
+
+.content {
+  @apply fixed h-screen w-[300px] top-0 right-0 bg-[#0D0D0D] translate-x-[+100%] transition-all;
+}
+
+.contentActive {
+  @apply translate-x-0;
+}

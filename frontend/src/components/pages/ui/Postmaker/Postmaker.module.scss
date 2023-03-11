@@ -2,12 +2,25 @@
   @apply flex items-center w-full h-[80px] bg-[#121212] rounded-xl;
 }
 
+.mobContainer {
+  @apply flex;
+  @media (max-width: 690px) {
+    @apply flex-col gap-2;
+  }
+}
+
 .input {
   @apply m-0 p-0 pl-7 w-full font-normal text-base;
+  @media (max-width: 900px) {
+    @apply pl-4 text-sm;
+  }
 }
 
 .buttons {
   @apply ml-auto mr-6 w-[110px] flex gap-4;
+  @media (max-width: 900px) {
+    @apply mr-3;
+  }
 }
 
 .label {
