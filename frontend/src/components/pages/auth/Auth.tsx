@@ -18,7 +18,9 @@ import Authinput, { FormValues } from "../ui/Input/Authinput";
 import AuthError from "../ui/Error/AuthError";
 import { useNavigate } from "react-router-dom";
 
-const Auth: FC = () => {
+type FuncProps = { loginFunc: (values: void) => void };
+
+const Auth: FC<FuncProps> = (props: FuncProps) => {
   const isLogin = window.location.pathname === "/login";
   const { handleSubmit, formState, control } = useForm<FormValues>({
     defaultValues: {
@@ -32,11 +34,12 @@ const Auth: FC = () => {
   const navigate = useNavigate();
 
   const { store } = useContext(Context);
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     if (isLogin) {
-      store.login(data.Email, data.Password, navigate);
+      await store.login(data.Email, data.Password, navigate);
+      store.isAuth ? props.loginFunc() : null;
     } else {
-      store.register(data.Email, data.Password, data.Name, navigate);
+      await store.register(data.Email, data.Password, data.Name, navigate);
     }
   };
 

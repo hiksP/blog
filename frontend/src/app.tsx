@@ -28,11 +28,15 @@ const App: FC = () => {
     setLoggedIn(JSON.parse(localStorage.getItem("isAuth")));
   }, []);
 
+  const loginFunc = () => {
+    setLoggedIn(true);
+  };
+
   return (
     <Routes>
       <Route path="/" element={<Home></Home>} />
-      <Route path="/login" element={<Auth></Auth>} />
-      <Route path="/register" element={<Auth></Auth>} />
+      <Route path="/login" element={<Auth loginFunc={loginFunc}></Auth>} />
+      <Route path="/register" element={<Auth loginFunc={loginFunc}></Auth>} />
       <Route
         path="/profile"
         element={
