@@ -22,14 +22,36 @@ const Home: FC = () => {
     isLoading,
   } = useQuery(["posts"], () => PostService.getPosts());
 
+  const [postsOnPage, setPostsOnPage] = useState<IPost[]>();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const postsPerPage = 3;
+  const pages: number[] = [];
+
+  useEffect(() => {
+    setPostsOnPage(posts);
+    if (postsOnPage) {
+      for (let i = 1; i <= Math.ceil(postsOnPage?.length / postsPerPage); i++) {
+        pages.push(i);
+      }
+    }
+  }, [posts, postsOnPage]);
+
+  const handlePage = (event) => {
+    setCurrentPage(Number(event.target.id));
+  };
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = postsOnPage?.slice(indexOfFirstPost, indexOfLastPost);
+
   return (
     <Layout>
       <Postmaker></Postmaker>
       <ul className={styles.list}>
         {isLoading ? (
           <Loader></Loader>
-        ) : posts?.length ? (
-          posts.map((post) => <Post post={post} key={post._id}></Post>)
+        ) : currentPosts?.length ? (
+          currentPosts.map((post) => <Post post={post} key={post._id}></Post>)
         ) : (
           <div>No posts</div>
         )}
