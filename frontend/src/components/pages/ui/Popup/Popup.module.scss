@@ -53,3 +53,24 @@
     @apply left-[115px];
   }
 }
+
+.closeProfile {
+  @media (max-width: 680px) {
+    @apply left-[300px];
+  }
+  @media (max-width: 600px) {
+    @apply left-[240px];
+  }
+  @media (max-width: 510px) {
+    @apply left-[185px];
+  }
+  @media (max-width: 430px) {
+    @apply left-[165px];
+  }
+  @media (max-width: 375px) {
+    @apply left-[140px];
+  }
+  @media (max-width: 340px) {
+    @apply left-[115px];
+  }
+}

@@ -15,7 +15,6 @@ export const PostService = {
   },
 
   async createPost(data: CreatedPost) {
-    console.log(data);
     try {
       const response = await $api.post(`posts`, data, {
         headers: {

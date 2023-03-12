@@ -1,3 +1,33 @@
 .form {
   @apply px-[80px] py-[65px] rounded-md w-[500px] h-[342px] bg-[#202020];
+  @media (max-width: 780px) {
+    @apply px-[40px] w-[350px];
+  }
+  @media (max-width: 680px) {
+    @apply ml-[300px];
+  }
+  @media (max-width: 600px) {
+    @apply px-[25px] w-[300px] ml-[220px];
+  }
+  @media (max-width: 510px) {
+    @apply ml-[110px];
+  }
+  @media (max-width: 430px) {
+    @apply ml-[80px];
+  }
+  @media (max-width: 375px) {
+    @apply px-[10px] w-[285px] ml-[50px];
+  }
+  @media (max-width: 356px) {
+    @apply ml-[30px];
+  }
+  @media (max-width: 340px) {
+    @apply ml-[15px];
+  }
+  @media (max-width: 330px) {
+    @apply ml-[10px];
+  }
+  @media (max-width: 320px) {
+    @apply ml-[5px];
+  }
 }

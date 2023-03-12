@@ -8,6 +8,7 @@ type PopupProps = {
 };
 
 const Popup = ({ children, isOpen, onClose }: PopupProps) => {
+  const isProfile = window.location.pathname === "/profile";
   useEffect(() => {
     const handleEscClose = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -26,7 +27,12 @@ const Popup = ({ children, isOpen, onClose }: PopupProps) => {
         isOpen ? `${styles.popup} ${styles.opened}` : `${styles.popup}`
       }
     >
-      <button onClick={() => onClose()} className={styles.close}></button>
+      <button
+        onClick={() => onClose()}
+        className={
+          !isProfile ? styles.close : styles.close + " " + styles.closeProfile
+        }
+      ></button>
       {children}
     </div>
   );

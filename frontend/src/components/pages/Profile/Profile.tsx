@@ -84,8 +84,8 @@ const Profile: FC = () => {
             </p>
           </div>
         </div>
+        <AvatarPopup isOpen={isPopupOpened} onClose={closePopup}></AvatarPopup>
       </section>
-      <AvatarPopup isOpen={isPopupOpened} onClose={closePopup}></AvatarPopup>
     </Layout>
   );
 };
