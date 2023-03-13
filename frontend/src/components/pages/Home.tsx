@@ -12,6 +12,7 @@ import Loader from "./ui/Loader/Loader";
 import Layout from "./ui/Layout/Layout";
 import { Context } from "../../main";
 import { observer } from "mobx-react-lite";
+import PageSelection from "./ui/PageSelection/PageSelection";
 
 const Home: FC = () => {
   const { store } = useContext(Context);
@@ -24,20 +25,30 @@ const Home: FC = () => {
 
   const [postsOnPage, setPostsOnPage] = useState<IPost[]>();
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [pages, setPages] = useState<number[]>([]);
   const postsPerPage = 3;
-  const pages: number[] = [];
+  const pagesArr: number[] = [];
 
   useEffect(() => {
     setPostsOnPage(posts);
     if (postsOnPage) {
       for (let i = 1; i <= Math.ceil(postsOnPage?.length / postsPerPage); i++) {
-        pages.push(i);
+        pagesArr.push(i);
+        setPages(pagesArr);
       }
     }
   }, [posts, postsOnPage]);
 
   const handlePage = (event) => {
-    setCurrentPage(Number(event.target.id));
+    setCurrentPage(event.target.innerHTML);
+  };
+
+  const handleForward = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handleBack = () => {
+    setCurrentPage(currentPage - 1);
   };
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -56,6 +67,13 @@ const Home: FC = () => {
           <div>No posts</div>
         )}
       </ul>
+      <PageSelection
+        pages={pages}
+        handlePage={handlePage}
+        handleForward={handleForward}
+        handleBack={handleBack}
+        currentPage={currentPage}
+      ></PageSelection>
     </Layout>
   );
 };

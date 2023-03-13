@@ -1,0 +1,20 @@
+.container {
+  @apply flex flex-row justify-center gap-4 items-center pb-20;
+}
+
+.button {
+  @apply w-[40px] h-[40px] rounded bg-[#0d0d0d] transition-opacity text-base font-normal;
+  &:hover {
+    @apply cursor-pointer opacity-40;
+  }
+  &:disabled {
+    @apply bg-slate-400;
+  }
+  &:disabled:hover {
+    @apply cursor-default opacity-100;
+  }
+}
+
+.list {
+  @apply flex flex-row gap-4;
+}
