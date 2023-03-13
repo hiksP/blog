@@ -19,17 +19,3 @@
     @apply gap-10;
   }
 }
-
-.link {
-  @apply text-[#F3EBA2] text-base font-medium transition-opacity;
-  &:hover {
-    @apply cursor-pointer opacity-40;
-  }
-  @media (max-width: 1000px) {
-    @apply text-sm;
-  }
-}
-
-.date {
-  @apply text-[#828282] text-xs;
-}

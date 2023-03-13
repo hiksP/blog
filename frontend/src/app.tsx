@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { observer } from "mobx-react-lite";
 import { FC, useContext, useEffect, useState } from "react";
 import {
@@ -17,11 +18,18 @@ import Profile from "./components/pages/Profile/Profile";
 import Works from "./components/pages/Works/Works";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import { Context } from "./main";
+import { PostService } from "./services/PostService";
 
 const App: FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const { store } = useContext(Context);
+
+  const {
+    data: posts,
+    error,
+    isLoading,
+  } = useQuery(["posts"], () => PostService.getPosts());
 
   useEffect(() => {
     store.checkAuth();
@@ -34,7 +42,10 @@ const App: FC = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Home></Home>} />
+      <Route
+        path="/"
+        element={<Home posts={posts} isLoading={isLoading}></Home>}
+      />
       <Route path="/login" element={<Auth loginFunc={loginFunc}></Auth>} />
       <Route path="/register" element={<Auth loginFunc={loginFunc}></Auth>} />
       <Route
@@ -47,7 +58,7 @@ const App: FC = () => {
         }
       />
       <Route path="/works" element={<Works></Works>} />
-      <Route path="/id/:id" element={<Article></Article>} />
+      <Route path="/id/:id" element={<Article posts={posts}></Article>} />
       <Route path="*" element={<NotFoundPage></NotFoundPage>} />
     </Routes>
   );

@@ -1,30 +1,30 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
+import { IPost } from "../../../../types/post.interface";
+import PostToRead from "../PostToRead/PostToRead";
 import styles from "./ColumnToRead.module.scss";
 
-const ColumnToRead: FC = () => {
+const ColumnToRead: FC<{ randomPosts?: IPost[] }> = ({ randomPosts }) => {
+  const [firstPosts, setFirstPosts] = useState<IPost[]>();
+  const [secondPosts, setSecondPosts] = useState<IPost[]>();
+
+  useEffect(() => {
+    setFirstPosts(randomPosts?.slice(0, 2));
+    setSecondPosts(randomPosts?.slice(2, 4));
+  }, [randomPosts]);
+
   return (
     <>
       <h3 className={styles.otherArticles}>Интересно почитать</h3>
       <div className={styles.links}>
         <div className={styles.col}>
-          <div>
-            <a className={styles.link}>Как я сходил на FrontEnd Conf 2021</a>
-            <p className={styles.date}>21.06.2020</p>
-          </div>
-          <div>
-            <a className={styles.link}>Купил новый ноутбук за 150 000 руб</a>
-            <p className={styles.date}>21.06.2020</p>
-          </div>
+          {firstPosts?.map((post) => (
+            <PostToRead key={post._id} post={post}></PostToRead>
+          ))}
         </div>
         <div className={styles.col}>
-          <div>
-            <a className={styles.link}>Как я сходил на FrontEnd Conf 2021</a>
-            <p className={styles.date}>21.06.2020</p>
-          </div>
-          <div>
-            <a className={styles.link}>Купил новый ноутбук за 150 000 руб</a>
-            <p className={styles.date}>21.06.2020</p>
-          </div>
+          {secondPosts?.map((post) => (
+            <PostToRead key={post._id} post={post}></PostToRead>
+          ))}
         </div>
       </div>
     </>

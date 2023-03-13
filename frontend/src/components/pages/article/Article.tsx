@@ -12,8 +12,9 @@ import dateFormat from "dateformat";
 import axios from "axios";
 import Loader from "../ui/Loader/Loader";
 import $api from "../../../http";
+import { IPost } from "../../../types/post.interface";
 
-const Article: FC = () => {
+const Article: FC<{ posts?: IPost[] }> = ({ posts }) => {
   const {
     data: post,
     error,
@@ -21,6 +22,12 @@ const Article: FC = () => {
   } = useQuery(["post"], () =>
     PostService.getPost(window.location.pathname.match(/\/([^\/]+)\/?$/)[1])
   );
+
+  const postsWithoutArticle = posts?.filter(
+    (article) => article._id !== post?._id
+  );
+  const shuffled = postsWithoutArticle?.sort(() => 0.5 - Math.random());
+  let randomPosts = shuffled?.slice(0, 4);
 
   useEffect(() => {
     if (!isLoading) {
@@ -65,7 +72,7 @@ const Article: FC = () => {
             ></img>
             <p className={styles.text}>{post?.content}</p>
           </div>
-          <ColumnToRead></ColumnToRead>
+          <ColumnToRead randomPosts={randomPosts}></ColumnToRead>
           <CommentSection></CommentSection>
         </section>
       )}
