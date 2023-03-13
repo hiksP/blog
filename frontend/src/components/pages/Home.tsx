@@ -39,8 +39,8 @@ const Home: FC = () => {
     }
   }, [posts, postsOnPage]);
 
-  const handlePage = (event) => {
-    setCurrentPage(event.target.innerHTML);
+  const handlePage = (event: any) => {
+    setCurrentPage(Number(event.target.innerHTML));
   };
 
   const handleForward = () => {

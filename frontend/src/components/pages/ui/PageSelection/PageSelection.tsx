@@ -28,6 +28,7 @@ const PageSelection: FC<{
             handlePage={handlePage}
             key={page}
             number={page}
+            currentPage={currentPage}
           ></PageElement>
         ))}
       </ul>
