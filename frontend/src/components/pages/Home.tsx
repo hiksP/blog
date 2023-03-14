@@ -7,6 +7,7 @@ import Loader from "./ui/Loader/Loader";
 import Layout from "./ui/Layout/Layout";
 import { observer } from "mobx-react-lite";
 import PageSelection from "./ui/PageSelection/PageSelection";
+import NoPosts from "./ui/NoPosts/NoPosts";
 
 const Home: FC<{
   posts?: IPost[];
@@ -82,16 +83,18 @@ const Home: FC<{
         ) : currentPosts?.length ? (
           currentPosts.map((post) => <Post post={post} key={post._id}></Post>)
         ) : (
-          <div>No posts</div>
+          <NoPosts></NoPosts>
         )}
       </ul>
-      <PageSelection
-        pages={pages}
-        handlePage={handlePage}
-        handleForward={handleForward}
-        handleBack={handleBack}
-        currentPage={currentPage}
-      ></PageSelection>
+      {currentPosts?.length ? (
+        <PageSelection
+          pages={pages}
+          handlePage={handlePage}
+          handleForward={handleForward}
+          handleBack={handleBack}
+          currentPage={currentPage}
+        ></PageSelection>
+      ) : null}
     </Layout>
   );
 };

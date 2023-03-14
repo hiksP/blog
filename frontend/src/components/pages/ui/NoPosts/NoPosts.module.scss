@@ -1,0 +1,18 @@
+.container {
+  @apply flex flex-col justify-center items-center my-14;
+}
+
+.title {
+  @apply text-[100px] text-[#FF7A00] text-center mb-20;
+  text-shadow: 4px 4px 1px white;
+  @media (max-width: 1000px) {
+    @apply text-[60px];
+  }
+}
+
+.description {
+  @apply text-xl text-center text-[#B1A18D];
+  @media (max-width: 1000px) {
+    @apply text-base;
+  }
+}
