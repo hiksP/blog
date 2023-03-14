@@ -19,17 +19,23 @@ import Works from "./components/pages/Works/Works";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import { Context } from "./main";
 import { PostService } from "./services/PostService";
+import { IPost } from "./types/post.interface";
 
 const App: FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [foundPosts, setFoundPosts] = useState<IPost[]>();
 
   const { store } = useContext(Context);
+
+  // получение постов
 
   const {
     data: posts,
     error,
     isLoading,
   } = useQuery(["posts"], () => PostService.getPosts());
+
+  // проверка на логин
 
   useEffect(() => {
     store.checkAuth();
@@ -40,11 +46,27 @@ const App: FC = () => {
     setLoggedIn(true);
   };
 
+  // поиск постов
+
+  const handleSearch = (input: string) => {
+    const foundPosts = posts?.filter((post) => {
+      return post.title.toLowerCase().includes(input.toLowerCase());
+    });
+    setFoundPosts(foundPosts);
+  };
+
   return (
     <Routes>
       <Route
         path="/"
-        element={<Home posts={posts} isLoading={isLoading}></Home>}
+        element={
+          <Home
+            handleSearch={handleSearch}
+            posts={posts}
+            isLoading={isLoading}
+            foundPosts={foundPosts}
+          ></Home>
+        }
       />
       <Route path="/login" element={<Auth loginFunc={loginFunc}></Auth>} />
       <Route path="/register" element={<Auth loginFunc={loginFunc}></Auth>} />

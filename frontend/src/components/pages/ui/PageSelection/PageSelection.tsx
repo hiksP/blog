@@ -23,10 +23,10 @@ const PageSelection: FC<{
         &lt;
       </button>
       <ul className={styles.list}>
-        {pages.map((page) => (
+        {pages.map((page, index) => (
           <PageElement
             handlePage={handlePage}
-            key={page}
+            key={index}
             number={page}
             currentPage={currentPage}
           ></PageElement>

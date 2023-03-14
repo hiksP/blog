@@ -3,7 +3,7 @@ import BurgerMenu from "../ui/BurgerMenu/BurgerMenu";
 import Navigation from "../ui/Navigation/Navigation";
 import styles from "./Header.module.scss";
 
-const Header: FC = () => {
+const Header: FC<{ handleSearch: Function }> = ({ handleSearch }) => {
   const [width, SetWidth] = useState(window.innerWidth);
 
   window.addEventListener("resize", () => {
@@ -15,7 +15,7 @@ const Header: FC = () => {
 
   return width > 680 ? (
     <header className={styles.header}>
-      <Navigation></Navigation>
+      <Navigation handleSearch={handleSearch}></Navigation>
     </header>
   ) : (
     <header className={styles.header}>
