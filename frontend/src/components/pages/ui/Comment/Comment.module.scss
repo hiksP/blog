@@ -7,9 +7,9 @@
 }
 
 .avatar {
-  @apply object-contain h-[40px] w-[40px] rounded-full mr-4;
+  @apply object-contain h-[45px] w-[45px] rounded-full mr-4;
   @media (max-width: 1000px) {
-    @apply h-[30px] w-[30px];
+    @apply h-[32px] w-[32px];
   }
 }
 

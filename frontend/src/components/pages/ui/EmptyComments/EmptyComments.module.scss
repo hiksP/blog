@@ -1,0 +1,6 @@
+.noComments {
+  @apply mx-auto text-center text-xl font-medium;
+  @media (max-width: 900px) {
+    @apply text-base;
+  }
+}

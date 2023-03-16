@@ -12,7 +12,17 @@ class CommentService {
 
   async getComments(postId) {
     const comments = await Comment.find({ post: postId }).populate("author");
-    return comments;
+    let commentArr = [];
+    comments.forEach((item) => {
+      commentArr.push({
+        authorName: item.author.name,
+        authorAvatar: item.author.avatar,
+        text: item.text,
+        date: item.created_at,
+        id: item._id,
+      });
+    });
+    return commentArr;
   }
 }
 

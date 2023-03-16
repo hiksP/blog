@@ -17,8 +17,8 @@ exports.createComment = async (req, res, next) => {
 
 exports.getComments = async (req, res, next) => {
   try {
-    const { postId } = req.query;
-    const comments = commentService.getComments(postId);
+    const id = req.params.id;
+    const comments = await commentService.getComments(id);
     res.json(comments);
   } catch (e) {
     next(e);

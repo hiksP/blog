@@ -68,19 +68,35 @@ const App: FC = () => {
           ></Home>
         }
       />
-      <Route path="/login" element={<Auth loginFunc={loginFunc}></Auth>} />
-      <Route path="/register" element={<Auth loginFunc={loginFunc}></Auth>} />
+      <Route
+        path="/login"
+        element={
+          <Auth handleSearch={handleSearch} loginFunc={loginFunc}></Auth>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <Auth handleSearch={handleSearch} loginFunc={loginFunc}></Auth>
+        }
+      />
       <Route
         path="/profile"
         element={
           <ProtectedRoute
             loggedIn={loggedIn}
-            component={<Profile></Profile>}
+            component={<Profile handleSearch={handleSearch}></Profile>}
           ></ProtectedRoute>
         }
       />
-      <Route path="/works" element={<Works></Works>} />
-      <Route path="/id/:id" element={<Article posts={posts}></Article>} />
+      <Route
+        path="/works"
+        element={<Works handleSearch={handleSearch}></Works>}
+      />
+      <Route
+        path="/id/:id"
+        element={<Article handleSearch={handleSearch} posts={posts}></Article>}
+      />
       <Route path="*" element={<NotFoundPage></NotFoundPage>} />
     </Routes>
   );

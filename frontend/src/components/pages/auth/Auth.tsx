@@ -17,8 +17,12 @@ import { ISign } from "../../../types/sign.interface";
 import Authinput, { FormValues } from "../ui/Input/Authinput";
 import AuthError from "../ui/Error/AuthError";
 import { useNavigate } from "react-router-dom";
+import { IPost } from "../../../types/post.interface";
 
-type FuncProps = { loginFunc: (values: void) => void };
+type FuncProps = {
+  loginFunc: (values: void) => void;
+  handleSearch: (values: string) => void;
+};
 
 const Auth: FC<FuncProps> = (props: FuncProps) => {
   const isLogin = window.location.pathname === "/login";
@@ -44,7 +48,7 @@ const Auth: FC<FuncProps> = (props: FuncProps) => {
   };
 
   return (
-    <Layout>
+    <Layout handleSearch={props.handleSearch}>
       <section className={styles.auth}>
         <h2 className={styles.title}>{isLogin ? "Вход" : "Регистрация"}</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

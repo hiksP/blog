@@ -9,7 +9,7 @@ import AvatarPopup from "../ui/AvatarPopoup/AvatarPopup";
 import AuthError from "../ui/Error/AuthError";
 import { observer } from "mobx-react-lite";
 
-const Profile: FC = () => {
+const Profile: FC<{ handleSearch: Function }> = ({ handleSearch }) => {
   const { store } = useContext(Context);
 
   const { handleSubmit, formState, control } = useForm<FormValues>({
@@ -37,7 +37,7 @@ const Profile: FC = () => {
   };
 
   return (
-    <Layout>
+    <Layout handleSearch={handleSearch}>
       <section className={styles.profile}>
         <h2 className={styles.title}>Профиль</h2>
         <div className={styles.container}>

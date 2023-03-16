@@ -1,7 +1,7 @@
 import { IUser } from "../types/user.inteface";
 import { makeAutoObservable } from "mobx";
 import { AuthService } from "../services/AuthService";
-import axios from "axios";
+import axios, { responseEncoding } from "axios";
 import { authResponse } from "../types/authResponse.interface";
 import { API_URL } from "../http";
 import { NavigateFunction } from "react-router-dom";

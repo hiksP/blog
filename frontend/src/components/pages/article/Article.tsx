@@ -14,7 +14,10 @@ import Loader from "../ui/Loader/Loader";
 import $api from "../../../http";
 import { IPost } from "../../../types/post.interface";
 
-const Article: FC<{ posts?: IPost[] }> = ({ posts }) => {
+const Article: FC<{ posts?: IPost[]; handleSearch: Function }> = ({
+  posts,
+  handleSearch,
+}) => {
   const {
     data: post,
     error,
@@ -42,10 +45,10 @@ const Article: FC<{ posts?: IPost[] }> = ({ posts }) => {
         document.body.removeChild(script);
       };
     }
-  }, [isLoading]);
+  }, [isLoading, post]);
 
   return (
-    <Layout>
+    <Layout handleSearch={handleSearch}>
       {isLoading ? (
         <section className={`${styles.article} ${styles.loading}`}>
           <Loader></Loader>

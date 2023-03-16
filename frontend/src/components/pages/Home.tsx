@@ -70,10 +70,6 @@ const Home: FC<{
     }
   }, [postsOnPage, currentPosts, foundPosts]);
 
-  useEffect(() => {
-    console.log(currentPosts);
-  }, [currentPosts]);
-
   return (
     <Layout handleSearch={handleSearch}>
       <Postmaker></Postmaker>
