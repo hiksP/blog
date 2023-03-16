@@ -1,10 +1,7 @@
-const mailService = require("../Services/mailService");
-const { v4: uuidv4 } = require("uuid");
 const userService = require("../Services/userService");
 const CreatedUserError = require("../errors/CreatedUserError");
 const { validationResult } = require("express-validator");
 const WrongReqErorr = require("../errors/WrongReqError");
-const WrongAuthError = require("../errors/WrongAuthError");
 
 exports.registration = async (req, res, next) => {
   try {
