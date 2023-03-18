@@ -1,11 +1,10 @@
 import $api from "../http";
 import { IComment } from "../types/comment.interface";
-import { IUser } from "../types/user.inteface";
 
 export const CommentService = {
   async getComments(id: string) {
     const { data } = await $api.get<IComment[]>(`posts/${id}/comments/`);
-    return data;
+    return data.reverse();
   },
 
   async postComment(postId: string, text: string) {

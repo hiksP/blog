@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, ReactNode, useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import styles from "./Popup.module.scss";
 
 type PopupProps = {

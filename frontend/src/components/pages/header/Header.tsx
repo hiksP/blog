@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import BurgerMenu from "../ui/BurgerMenu/BurgerMenu";
 import Navigation from "../ui/Navigation/Navigation";
 import styles from "./Header.module.scss";

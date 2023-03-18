@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { FC, useContext, useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../../../main";
 import styles from "./Navigation.module.scss";
 

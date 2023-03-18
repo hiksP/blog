@@ -1,6 +1,5 @@
 import $api from "../http";
 import { AxiosResponse } from "axios";
-import { authResponse } from "../types/authResponse.interface";
 import { IUser } from "../types/user.inteface";
 
 export const UserService = {

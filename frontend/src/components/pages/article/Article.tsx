@@ -1,15 +1,11 @@
-import { FC, useEffect } from "react";
-import Button from "../ui/Button/Button";
-import Input from "../ui/Input/Input";
+import { FC, useEffect, useState } from "react";
 import Layout from "../ui/Layout/Layout";
 import styles from "./Article.module.scss";
-import image from "../../../assets/image.svg";
 import ColumnToRead from "../ui/ColumnToRead/ColumnToRead";
 import CommentSection from "../ui/CommentSection/CommentSection";
 import { useQuery } from "@tanstack/react-query";
 import { PostService } from "../../../services/PostService";
 import dateFormat from "dateformat";
-import axios from "axios";
 import Loader from "../ui/Loader/Loader";
 import $api from "../../../http";
 import { IPost } from "../../../types/post.interface";
@@ -18,6 +14,7 @@ const Article: FC<{ posts?: IPost[]; handleSearch: Function }> = ({
   posts,
   handleSearch,
 }) => {
+  // получение поста на странице
   const {
     data: post,
     error,
@@ -26,12 +23,19 @@ const Article: FC<{ posts?: IPost[]; handleSearch: Function }> = ({
     PostService.getPost(window.location.pathname.match(/\/([^\/]+)\/?$/)[1])
   );
 
-  const postsWithoutArticle = posts?.filter(
-    (article) => article._id !== post?._id
-  );
-  const shuffled = postsWithoutArticle?.sort(() => 0.5 - Math.random());
-  let randomPosts = shuffled?.slice(0, 4);
+  // случайные посты для колонки
+  const [randomPosts, setRandomPosts] = useState<IPost[]>();
 
+  // логика получения случаныйх постов
+  useEffect(() => {
+    const postsWithoutArticle = posts?.filter(
+      (article) => article._id !== post?._id
+    );
+    const shuffled = postsWithoutArticle?.sort(() => 0.5 - Math.random());
+    setRandomPosts(shuffled?.slice(0, 4));
+  }, [posts]);
+
+  // шейр кнопка
   useEffect(() => {
     if (!isLoading) {
       const script = document.createElement("script");

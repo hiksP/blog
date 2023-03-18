@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, ReactNode, useEffect, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import Header from "../../header/Header";
 import SideBar from "../SideBar/SideBar";
 import styles from "./Layout.module.scss";

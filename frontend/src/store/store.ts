@@ -1,7 +1,7 @@
 import { IUser } from "../types/user.inteface";
 import { makeAutoObservable } from "mobx";
 import { AuthService } from "../services/AuthService";
-import axios, { responseEncoding } from "axios";
+import axios from "axios";
 import { authResponse } from "../types/authResponse.interface";
 import { API_URL } from "../http";
 import { NavigateFunction } from "react-router-dom";
@@ -38,7 +38,7 @@ export default class Store {
       this.setUser(response.data.user);
       this.setLocalStorage(response.data.user);
       navigate("/");
-    } catch (e) {
+    } catch (e: any) {
       console.log(e.response?.data?.message);
     }
   }
@@ -56,7 +56,7 @@ export default class Store {
       this.setUser(response.data.user);
       this.setLocalStorage(response.data.user);
       navigate("/signin");
-    } catch (e) {
+    } catch (e: any) {
       console.log(e.response?.data?.message);
     }
   }
@@ -67,7 +67,7 @@ export default class Store {
       localStorage.removeItem("token");
       this.setAuth(false);
       this.setUser({} as IUser);
-    } catch (e) {
+    } catch (e: any) {
       console.log(e.response?.data?.message);
     }
   }
@@ -81,7 +81,7 @@ export default class Store {
       this.setAuth(true);
       this.setUser(response.data.user);
       this.requestCompleted = true;
-    } catch (e) {
+    } catch (e: any) {
       console.log(e.response?.data?.message);
     }
   }
@@ -91,7 +91,7 @@ export default class Store {
       const response = await UserService.updateAvatar(url);
       this.setUser(response.data);
       this.setLocalStorage(response.data);
-    } catch (e) {
+    } catch (e: any) {
       console.log(e.response?.data?.message);
     }
   }
@@ -101,7 +101,7 @@ export default class Store {
       const response = await UserService.updateMe(email, name);
       this.setUser(response.data);
       this.setLocalStorage(response.data);
-    } catch (e) {
+    } catch (e: any) {
       console.log(e.response?.data?.message);
     }
   }

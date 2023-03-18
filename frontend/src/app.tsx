@@ -1,15 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { observer } from "mobx-react-lite";
 import { FC, useContext, useEffect, useState } from "react";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-  Router,
-  Routes,
-  BrowserRouter,
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Article from "./components/pages/article/Article";
 import Auth from "./components/pages/auth/Auth";
 import Home from "./components/pages/Home";

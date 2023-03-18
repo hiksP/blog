@@ -1,12 +1,11 @@
 import $api from "../http";
-import axios from "axios";
 import { IPost } from "../types/post.interface";
 import { CreatedPost } from "../components/pages/ui/Postmaker/Postmaker";
 
 export const PostService = {
   async getPosts() {
     const { data } = await $api.get<IPost[]>("/posts");
-    return data;
+    return data.reverse();
   },
 
   async getPost(id: string) {

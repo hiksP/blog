@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { FC, useContext, useEffect, useState } from "react";
-import { Context } from "../../../../main";
+import { FC, useEffect, useState } from "react";
 import { CommentService } from "../../../../services/CommentsService";
 import { IComment } from "../../../../types/comment.interface";
 import Button from "../Button/Button";
 import Comment from "../Comment/Comment";
+import ComemntsList from "../CommentsList/CommentsList";
 import EmptyComments from "../EmptyComments/EmptyComments";
 import Input from "../Input/Input";
 import Loader from "../Loader/Loader";
@@ -16,14 +16,23 @@ const CommentSection: FC = () => {
     data: comments,
     error,
     isLoading,
+    refetch,
   } = useQuery(["comments"], () => CommentService.getComments(postId));
+
+  const [commentsOnPage, setCommentsOnPage] = useState<IComment[]>();
 
   const [comment, setComment] = useState<string>("");
 
-  const commentHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const commentHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    CommentService.postComment(postId, comment);
+    await CommentService.postComment(postId, comment);
+    refetch();
+    setComment("");
   };
+
+  useEffect(() => {
+    setCommentsOnPage(comments);
+  }, [comments, refetch]);
 
   return (
     <div className={styles.discussion}>
@@ -43,17 +52,10 @@ const CommentSection: FC = () => {
         ></Input>
         <Button>Отправить</Button>
       </form>
-      <ul className={styles.commentList}>
-        {isLoading ? (
-          <Loader></Loader>
-        ) : comments?.length ? (
-          comments.map((coment: IComment) => (
-            <Comment comment={coment} key={coment.id}></Comment>
-          ))
-        ) : (
-          <EmptyComments></EmptyComments>
-        )}
-      </ul>
+      <ComemntsList
+        isLoading={isLoading}
+        commentsOnPage={commentsOnPage}
+      ></ComemntsList>
     </div>
   );
 };

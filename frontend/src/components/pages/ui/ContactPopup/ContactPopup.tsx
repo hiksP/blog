@@ -1,8 +1,6 @@
-import { FC, useEffect } from "react";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import styles from "./ContactPopup.module.scss";
-import cancel from "../../../../assets/cancel.svg";
 import Popup from "../Popup/Popup";
 
 type ContactPopupProps = {
