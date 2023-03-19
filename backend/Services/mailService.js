@@ -30,6 +30,15 @@ class MailService {
       `,
     });
   }
+
+  async sendMail(text, name, email) {
+    await this.transporter.sendMail({
+      from: "blogtestovich@mail.ru",
+      to: "qksyo@yandex.ru",
+      subject: "Очень важное письмо с блога!)",
+      text: `Это письмот от ${name}. Email для связи ${email}. Его сообщение: ${text}`,
+    });
+  }
 }
 
 module.exports = new MailService();
