@@ -9,18 +9,22 @@ export type CreatedPost = {
   picture: File;
 };
 
-const Postmaker: FC = () => {
+const Postmaker: FC<{ postsRefetch: Function }> = ({ postsRefetch }) => {
   const [picture, setPicture] = useState<File>();
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    PostService.createPost({
+    await PostService.createPost({
       title,
       content,
       picture,
     });
+    setTitle("");
+    setContent("");
+    setPicture(undefined);
+    postsRefetch();
   };
 
   const changeName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,8 +35,15 @@ const Postmaker: FC = () => {
     setContent(e.target.value);
   };
 
-  const handlePicture = (event: ChangeEvent<HTMLInputElement>) => {
-    setPicture(event.target.files[0]);
+  const handlePicture = (
+    event: ChangeEvent & {
+      target: HTMLInputElement;
+    }
+  ) => {
+    const { target } = event;
+    if (target.files) {
+      setPicture(target.files[0]);
+    }
   };
 
   return (

@@ -1,6 +1,6 @@
 import styles from "./Input.module.scss";
 
-import { useForm, useController, UseControllerProps } from "react-hook-form";
+import { useController, UseControllerProps } from "react-hook-form";
 
 export type FormValues = {
   Email?: string;

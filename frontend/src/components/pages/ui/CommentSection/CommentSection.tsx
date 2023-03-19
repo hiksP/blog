@@ -3,11 +3,8 @@ import { FC, useEffect, useState } from "react";
 import { CommentService } from "../../../../services/CommentsService";
 import { IComment } from "../../../../types/comment.interface";
 import Button from "../Button/Button";
-import Comment from "../Comment/Comment";
 import ComemntsList from "../CommentsList/CommentsList";
-import EmptyComments from "../EmptyComments/EmptyComments";
 import Input from "../Input/Input";
-import Loader from "../Loader/Loader";
 import styles from "./CommentSection.module.scss";
 
 const CommentSection: FC = () => {

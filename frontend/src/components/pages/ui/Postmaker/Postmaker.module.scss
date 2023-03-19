@@ -1,5 +1,5 @@
 .container {
-  @apply flex items-center w-full h-[80px] bg-[#121212] rounded-xl;
+  @apply flex items-center justify-between w-full h-[80px] bg-[#121212] rounded-xl;
 }
 
 .mobContainer {
@@ -17,7 +17,7 @@
 }
 
 .buttons {
-  @apply ml-auto mr-6 w-[110px] flex gap-4;
+  @apply mr-6 w-[110px] flex gap-4;
   @media (max-width: 900px) {
     @apply mr-3;
   }

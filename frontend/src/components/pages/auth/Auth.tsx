@@ -1,23 +1,14 @@
-import {
-  EventHandler,
-  FC,
-  MouseEvent,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { FC, useContext } from "react";
 import styles from "./Auth.module.scss";
 import { Link } from "react-router-dom";
 import Layout from "../ui/Layout/Layout";
 import Input from "../ui/Input/Input";
 import Button from "../ui/Button/Button";
 import { Context } from "../../../main";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { ISign } from "../../../types/sign.interface";
+import { useForm } from "react-hook-form";
 import Authinput, { FormValues } from "../ui/Input/Authinput";
 import AuthError from "../ui/Error/AuthError";
 import { useNavigate } from "react-router-dom";
-import { IPost } from "../../../types/post.interface";
 
 type FuncProps = {
   loginFunc: (values: void) => void;

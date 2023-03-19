@@ -25,6 +25,7 @@ const App: FC = () => {
     data: posts,
     error,
     isLoading,
+    refetch,
   } = useQuery(["posts"], () => PostService.getPosts());
 
   // проверка на логин
@@ -47,6 +48,10 @@ const App: FC = () => {
     setFoundPosts(foundPosts);
   };
 
+  const postsRefetch = () => {
+    refetch();
+  };
+
   return (
     <Routes>
       <Route
@@ -57,6 +62,7 @@ const App: FC = () => {
             posts={posts}
             isLoading={isLoading}
             foundPosts={foundPosts}
+            postsRefetch={postsRefetch}
           ></Home>
         }
       />

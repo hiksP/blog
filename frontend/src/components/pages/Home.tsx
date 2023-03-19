@@ -14,7 +14,8 @@ const Home: FC<{
   isLoading: boolean;
   handleSearch: Function;
   foundPosts?: IPost[];
-}> = ({ posts, isLoading, handleSearch, foundPosts }) => {
+  postsRefetch: Function;
+}> = ({ posts, isLoading, handleSearch, foundPosts, postsRefetch }) => {
   // все посты
   const [postsOnPage, setPostsOnPage] = useState<IPost[]>();
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -72,7 +73,7 @@ const Home: FC<{
 
   return (
     <Layout handleSearch={handleSearch}>
-      <Postmaker></Postmaker>
+      <Postmaker postsRefetch={postsRefetch}></Postmaker>
       <ul className={styles.list}>
         {isLoading ? (
           <Loader></Loader>

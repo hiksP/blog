@@ -1,6 +1,5 @@
 import { FC } from "react";
 import styles from "./Comment.module.scss";
-import photo from "../../../../assets/comment.svg";
 import { IComment } from "../../../../types/comment.interface";
 import dateFormat from "dateformat";
 

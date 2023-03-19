@@ -1,6 +1,5 @@
-import { FC, useContext, useEffect } from "react";
+import { useContext } from "react";
 import Button from "../Button/Button";
-import Input from "../Input/Input";
 import styles from "./AvatarPopup.module.scss";
 import Popup from "../Popup/Popup";
 import Authinput, { Avatar, FormValues } from "../Input/Authinput";

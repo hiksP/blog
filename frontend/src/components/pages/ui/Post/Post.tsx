@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./Post.module.scss";
-import dateFormat, { masks } from "dateformat";
+import dateFormat from "dateformat";
 import { IPost } from "../../../../types/post.interface";
 import { Link } from "react-router-dom";
 
