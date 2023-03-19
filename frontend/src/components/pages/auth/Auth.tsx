@@ -2,7 +2,6 @@ import { FC, useContext } from "react";
 import styles from "./Auth.module.scss";
 import { Link } from "react-router-dom";
 import Layout from "../ui/Layout/Layout";
-import Input from "../ui/Input/Input";
 import Button from "../ui/Button/Button";
 import { Context } from "../../../main";
 import { useForm } from "react-hook-form";
