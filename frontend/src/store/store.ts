@@ -55,7 +55,7 @@ export default class Store {
       this.setAuth(true);
       this.setUser(response.data.user);
       this.setLocalStorage(response.data.user);
-      navigate("/signin");
+      navigate("/");
     } catch (e: any) {
       console.log(e.response?.data?.message);
     }

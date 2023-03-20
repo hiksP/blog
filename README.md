@@ -52,3 +52,36 @@
 ### Главная страница
 
 ![screen-gif](./gifs/homePage.gif)
+
+### Вход в профиль
+
+![screen-gif](./gifs/auth.gif)
+
+### Посты
+
+![screen-gif](./gifs/post.gif)
+
+### Редактирования профиля
+
+![screen-gif](./gifs/patch.gif)
+
+### Добавление поста (к сожалению, не смог запечатлить выбор картинки, т.к при этом запись крашилась)
+
+![screen-gif](./gifs/addingPost.gif)
+
+### Страница "Мои работы"
+
+![Alt text](./gifs/works.jpg)
+
+### Окно "Написать мне"
+
+![Alt text](./gifs/contact.jpg)
+
+### Письмо подтверждения профиля и формата "написать мне"
+
+![Alt text](./gifs/mail2.jpg)
+![Alt text](./gifs/mail1.jpg)
+
+### Адаптивная верстка на разных разрешениях
+
+![screen-gif](./gifs/adaptive.gif)
