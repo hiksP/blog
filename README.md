@@ -63,15 +63,19 @@
 
 ### Редактирования профиля
 
-![screen-gif](./gifs/patch.gif)
+![screen-gif](./gifs/userPatch.gif)
 
 ### Добавление поста (к сожалению, не смог запечатлить выбор картинки, т.к при этом запись крашилась)
 
 ![screen-gif](./gifs/addingPost.gif)
 
+### Поиск постов
+
+![screen-gif](/gifs/searching.gif)
+
 ### Страница "Мои работы"
 
-![Alt text](./gifs/works.jpg)
+![Alt text](./gifs/Screenshot_1.jpg)
 
 ### Окно "Написать мне"
 

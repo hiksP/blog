@@ -8,7 +8,15 @@ const PageSelection: FC<{
   handleForward: Function;
   handleBack: Function;
   currentPage: number;
-}> = ({ pages, handlePage, handleForward, handleBack, currentPage }) => {
+  isSearching: boolean;
+}> = ({
+  pages,
+  handlePage,
+  handleForward,
+  handleBack,
+  currentPage,
+  isSearching,
+}) => {
   const [firstPage, setFirstPage] = useState(pages[0]);
   const [lastPage, setLastPage] = useState(pages.slice(-1)[0]);
   const [nextPage, setNextPage] = useState(currentPage + 1);
@@ -40,41 +48,43 @@ const PageSelection: FC<{
         onClick={() => {
           handleBack();
         }}
-        className={styles.button}
+        className={isSearching ? styles.noButton : styles.button}
       >
         &lt;
       </button>
-      <ul className={styles.list}>
-        {!isPagesTooMuch
-          ? pages.map((page, index) => (
-              <PageElement
-                handlePage={handlePage}
-                key={index}
-                number={page}
-                currentPage={currentPage}
-                isPagesTooMuch={isPagesTooMuch}
-                nextPage={nextPage}
-                lastPage={lastPage}
-              ></PageElement>
-            ))
-          : pagesMuch.map((page, index) => (
-              <PageElement
-                handlePage={handlePage}
-                key={index}
-                number={page}
-                currentPage={currentPage}
-                isPagesTooMuch={isPagesTooMuch}
-                nextPage={nextPage}
-                lastPage={lastPage}
-              ></PageElement>
-            ))}
-      </ul>
+      {!isSearching ? (
+        <ul className={styles.list}>
+          {!isPagesTooMuch
+            ? pages.map((page, index) => (
+                <PageElement
+                  handlePage={handlePage}
+                  key={index}
+                  number={page}
+                  currentPage={currentPage}
+                  isPagesTooMuch={isPagesTooMuch}
+                  nextPage={nextPage}
+                  lastPage={lastPage}
+                ></PageElement>
+              ))
+            : pagesMuch.map((page, index) => (
+                <PageElement
+                  handlePage={handlePage}
+                  key={index}
+                  number={page}
+                  currentPage={currentPage}
+                  isPagesTooMuch={isPagesTooMuch}
+                  nextPage={nextPage}
+                  lastPage={lastPage}
+                ></PageElement>
+              ))}
+        </ul>
+      ) : null}
       <button
         disabled={isCurrentPageLast}
         onClick={() => {
           handleForward();
         }}
-        className={styles.button}
+        className={isSearching ? styles.noButton : styles.button}
       >
         &gt;
       </button>

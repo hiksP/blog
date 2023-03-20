@@ -15,6 +15,10 @@
   }
 }
 
+.noButton {
+  @apply hidden;
+}
+
 .list {
   @apply flex flex-row gap-4;
 }

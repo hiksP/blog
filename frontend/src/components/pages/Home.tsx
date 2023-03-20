@@ -90,6 +90,7 @@ const Home: FC<{
           handleForward={handleForward}
           handleBack={handleBack}
           currentPage={currentPage}
+          isSearching={isSearching}
         ></PageSelection>
       ) : null}
     </Layout>
