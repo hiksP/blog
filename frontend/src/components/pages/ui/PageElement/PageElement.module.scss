@@ -11,3 +11,11 @@
     @apply cursor-default opacity-100;
   }
 }
+
+.noDots {
+  @apply hidden;
+}
+
+.dots {
+  @apply flex flex-col-reverse;
+}

@@ -21,6 +21,9 @@ const ContactPopup = ({ isOpen, onClose }: ContactPopupProps) => {
       await ContactService.Contact(message, name, email);
       onClose();
       alert("Ваше письмо доставлено");
+      setName("");
+      setEmail("");
+      setMessage("");
     } catch (e) {
       alert(e.message);
     }
