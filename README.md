@@ -51,4 +51,4 @@
 
 ### Главная страница
 
-![screen-gif](../homePage.gif)
+![screen-gif](./gifs/homePage.gif)
