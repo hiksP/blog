@@ -1,13 +1,13 @@
-import $api from "../http";
-import { AxiosResponse } from "axios";
-import { authResponse } from "../types/authResponse.interface";
+import $api from '../http'
+import { authResponse } from '../types/authResponse.interface'
+import { AxiosResponse } from 'axios'
 
 export const AuthService = {
   async signin(
     email: string,
     password: string
   ): Promise<AxiosResponse<authResponse>> {
-    return $api.post<authResponse>("/signin", { email, password });
+    return $api.post<authResponse>('/signin', { email, password })
   },
 
   async signup(
@@ -15,10 +15,10 @@ export const AuthService = {
     password: string,
     name: string
   ): Promise<AxiosResponse<authResponse>> {
-    return $api.post<authResponse>("/signup", { email, password, name });
+    return $api.post<authResponse>('/signup', { email, password, name })
   },
 
   async logout(): Promise<void> {
-    return $api.post("/signout");
-  },
-};
+    return $api.post('/signout')
+  }
+}

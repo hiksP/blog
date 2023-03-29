@@ -1,7 +1,9 @@
+@import url(./font/Inter/inter.css);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply text-base text-white bg-[#181818];
+  font-family: 'Inter', sans-serif;
+  @apply bg-[#181818] text-base text-white;
 }

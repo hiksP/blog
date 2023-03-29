@@ -8,30 +8,34 @@ textarea:focus {
 }
 
 .nav {
-  @apply bg-[#0D0D0D] flex w-[100%] items-center h-[50px] justify-between;
+  @apply flex h-[50px] w-[100%] items-center justify-between bg-[#0D0D0D];
 }
 
 .firstUl {
-  @apply ml-8 flex flex-row w-[30%] justify-between items-center h-full;
+  @apply ml-8 flex h-full w-[30%] flex-row items-center justify-between;
   @media (max-width: 780px) {
     @apply ml-2 w-auto;
   }
 }
 
 .secondUl {
-  @apply flex flex-row items-center justify-end h-full;
+  @apply flex h-full flex-row items-center justify-end;
   @media (max-width: 900px) {
     @apply justify-between;
   }
 }
 
 .el {
-  @apply text-white font-normal text-base uppercase transition-opacity;
+  @apply relative cursor-pointer text-base font-normal uppercase text-white;
+  &:after {
+    content: '';
+    @apply absolute left-0 -bottom-1 h-0.5 w-0 bg-blue-900 transition-all duration-200;
+  }
   &:last-of-type {
     @apply mr-12;
   }
-  &:hover {
-    @apply cursor-pointer opacity-40;
+  &:hover::after {
+    @apply w-full;
   }
   @media (max-width: 900px) {
     @apply text-sm;
@@ -42,7 +46,7 @@ textarea:focus {
 }
 
 .box {
-  @apply bg-[#202020] flex items-center w-[230px] h-full;
+  @apply flex h-full w-[230px] items-center bg-[#202020];
   @media (max-width: 780px) {
     @apply w-[190px];
   }

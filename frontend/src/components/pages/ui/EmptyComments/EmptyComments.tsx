@@ -1,8 +1,8 @@
-import { FC } from "react";
-import styles from "./EmptyComments.module.scss";
+import styles from './EmptyComments.module.scss'
+import { FC } from 'react'
 
 const EmptyComments: FC = () => {
-  return <p className={styles.noComments}>No comments yet</p>;
-};
+  return <p className={styles.noComments}>No comments yet</p>
+}
 
-export default EmptyComments;
+export default EmptyComments

@@ -1,5 +1,5 @@
 .link {
-  @apply text-[#F3EBA2] text-base font-medium transition-opacity;
+  @apply text-base font-medium text-[#F3EBA2] transition-opacity;
   &:hover {
     @apply cursor-pointer opacity-40;
   }
@@ -9,5 +9,5 @@
 }
 
 .date {
-  @apply text-[#828282] text-xs;
+  @apply text-xs text-[#828282];
 }

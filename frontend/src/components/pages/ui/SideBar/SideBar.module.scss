@@ -1,5 +1,5 @@
 .sidebar {
-  @apply h-screen w-[300px] fixed bg-[#202020];
+  @apply fixed h-screen w-[300px] bg-[#202020];
   @media (max-width: 900px) {
     @apply w-[200px];
   }
@@ -21,7 +21,7 @@
 .info {
   @apply flex flex-col items-center;
   @media (max-width: 680px) {
-    @apply flex flex-row items-start w-[260px] border-b-[1px] pb-5 mb-7 border-[#1C1C1C];
+    @apply mb-7 flex w-[260px] flex-row items-start border-b-[1px] border-[#1C1C1C] pb-5;
   }
 }
 
@@ -30,31 +30,31 @@
 }
 
 .photo {
-  @apply w-[100px] h-[100px] object-contain border-[2px] border-white rounded-full relative z-20 mt-[-50px];
+  @apply relative z-20 mt-[-50px] h-[100px] w-[100px] rounded-full border-[2px] border-white object-contain;
   @media (max-width: 900px) {
-    @apply w-[75px] h-[75px];
+    @apply h-[75px] w-[75px];
   }
   @media (max-width: 680px) {
-    @apply w-[65px] h-[65px] mt-[-32px] ml-4 mr-2;
+    @apply mt-[-32px] ml-4 mr-2 h-[65px] w-[65px];
   }
 }
 
 .name {
-  @apply text-2xl m-0 p-0 mt-5 mb-2 text-center;
+  @apply m-0 mt-5 mb-2 p-0 text-center text-2xl;
   @media (max-width: 900px) {
     @apply text-xl;
   }
   @media (max-width: 680px) {
-    @apply text-base mb-[2px] mt-0;
+    @apply mb-[2px] mt-0 text-base;
   }
 }
 
 .brief {
-  @apply text-sm font-light text-center;
+  @apply text-center text-sm font-light;
 }
 
 .socials {
-  @apply flex justify-center w-[260px] gap-8 m-0 p-0 mt-5 pb-8 border-b-[1px] border-[#1C1C1C] mb-6;
+  @apply m-0 mt-5 mb-6 flex w-[260px] justify-center gap-8 border-b-[1px] border-[#1C1C1C] p-0 pb-8;
   @media (max-width: 900px) {
     @apply w-[180px];
   }
@@ -66,14 +66,14 @@
 .el {
   @apply transition-opacity;
   &:hover {
-    @apply opacity-40 cursor-pointer;
+    @apply cursor-pointer opacity-40;
   }
 }
 
 .description {
-  @apply max-w-[260px] m-0 p-0 mb-6 text-center text-base pb-8 border-b-[1px] border-[#1C1C1C];
+  @apply m-0 mb-6 max-w-[260px] border-b-[1px] border-[#1C1C1C] p-0 pb-8 text-center text-base;
   @media (max-width: 900px) {
-    @apply w-[180px] mb-3 pb-5 text-sm;
+    @apply mb-3 w-[180px] pb-5 text-sm;
   }
   @media (max-width: 680px) {
     @apply hidden;
@@ -83,7 +83,7 @@
 .navigation {
   @apply hidden;
   @media (max-width: 680px) {
-    @apply flex flex-col gap-2 mb-14;
+    @apply mb-14 flex flex-col gap-2;
   }
 }
 
@@ -102,17 +102,17 @@
 }
 
 .button {
-  @apply bg-[#3137C9] w-[120px] h-[40px] rounded-full font-medium text-sm text-center transition-opacity;
+  @apply h-[40px] w-[120px] rounded-full bg-[#3137C9] text-center text-sm font-medium transition-opacity;
   &:hover {
-    @apply opacity-40 cursor-pointer;
+    @apply cursor-pointer opacity-40;
   }
   &:first-child {
     @apply bg-[#ED3024];
   }
   @media (max-width: 900px) {
-    @apply w-[85px] h-[30px] text-xs;
+    @apply h-[30px] w-[85px] text-xs;
   }
   @media (max-width: 680px) {
-    @apply w-[120px] h-[40px] text-sm;
+    @apply h-[40px] w-[120px] text-sm;
   }
 }

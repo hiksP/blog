@@ -1,5 +1,5 @@
 .container {
-  @apply flex items-center justify-between w-full h-[80px] bg-[#121212] rounded-xl;
+  @apply flex h-[80px] w-full items-center justify-between rounded-xl bg-[#121212];
 }
 
 .mobContainer {
@@ -10,14 +10,14 @@
 }
 
 .input {
-  @apply m-0 p-0 pl-7 w-full font-normal text-base;
+  @apply m-0 w-full p-0 pl-7 text-base font-normal;
   @media (max-width: 900px) {
     @apply pl-4 text-sm;
   }
 }
 
 .buttons {
-  @apply mr-6 w-[110px] flex gap-4;
+  @apply mr-6 flex w-[110px] gap-4;
   @media (max-width: 900px) {
     @apply mr-3;
   }
@@ -28,15 +28,18 @@
 }
 
 .photo {
-  @apply w-[44px] opacity-0 absolute -z-20;
+  @apply absolute -z-20 w-[44px] opacity-0;
 }
 
 .button {
-  @apply flex items-center justify-center w-[44px] h-[44px] rounded-full bg-[#3137C9] transition-opacity;
+  @apply flex h-[44px] w-[44px] items-center justify-center rounded-full transition-opacity;
   &:hover {
     @apply cursor-pointer opacity-40;
   }
   &:first-of-type {
     @apply bg-[#EBEBEB] bg-photo bg-center bg-no-repeat;
+  }
+  &:last-of-type {
+    @apply bg-[#3137C9];
   }
 }

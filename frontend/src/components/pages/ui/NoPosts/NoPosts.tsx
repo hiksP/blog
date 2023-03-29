@@ -1,5 +1,5 @@
-import { FC } from "react";
-import styles from "./NoPosts.module.scss";
+import styles from './NoPosts.module.scss'
+import { FC } from 'react'
 
 const NoPosts: FC = () => {
   return (
@@ -9,7 +9,7 @@ const NoPosts: FC = () => {
         Do you want to search for something else?
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default NoPosts;
+export default NoPosts

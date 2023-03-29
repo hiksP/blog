@@ -1,21 +1,21 @@
 .article {
-  @apply flex flex-row bg-[#202020] w-[600px] h-[552px] justify-between;
+  @apply flex h-[552px] w-[600px] flex-row justify-between bg-[#202020];
   @media (max-width: 1040px) {
     @apply w-[500px];
   }
   @media (max-width: 750px) {
-    @apply w-[350px] h-[480px];
+    @apply h-[480px] w-[350px];
   }
   @media (max-width: 680px) {
-    @apply w-[450px] h-[552px];
+    @apply h-[552px] w-[450px];
   }
 
   @media (max-width: 480px) {
-    @apply w-[320px] h-full;
+    @apply h-full w-[320px];
   }
 
   @media (max-width: 350px) {
-    @apply w-[290px] h-full;
+    @apply h-full w-[290px];
   }
 }
 
@@ -30,7 +30,7 @@
 }
 
 .container {
-  @apply w-1/2 h-full flex flex-col justify-center items-center px-5;
+  @apply flex h-full w-1/2 flex-col items-center justify-center px-5;
   @media (max-width: 1040px) {
     @apply px-2;
   }
@@ -41,12 +41,12 @@
 }
 
 .title {
-  @apply text-2xl mb-8 font-medium;
+  @apply mb-8 text-2xl font-medium;
   @media (max-width: 1040px) {
-    @apply text-xl mb-6;
+    @apply mb-6 text-xl;
   }
   @media (max-width: 750px) {
-    @apply text-lg mb-4 mt-7;
+    @apply mb-4 mt-7 text-lg;
   }
   @media (max-width: 350px) {
     @apply text-base;
@@ -54,21 +54,21 @@
 }
 
 .text {
-  @apply text-base text-[#D2D2D2] text-center font-light mb-7;
+  @apply mb-7 text-center text-base font-light text-[#D2D2D2];
   @media (max-width: 1040px) {
-    @apply text-sm mb-5;
+    @apply mb-5 text-sm;
   }
 }
 
 .tags {
-  @apply flex flex-row justify-start gap-2 mb-20;
+  @apply mb-20 flex flex-row justify-start gap-2;
   @media (max-width: 750px) {
     @apply mb-10 flex-col;
   }
 }
 
 .tag {
-  @apply w-full px-1 rounded whitespace-nowrap bg-[#EA8C1E] h-[26px];
+  @apply h-[26px] w-full whitespace-nowrap rounded bg-[#EA8C1E] px-1;
 }
 
 .link {

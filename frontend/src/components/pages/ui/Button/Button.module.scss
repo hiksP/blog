@@ -1,7 +1,7 @@
 .button {
-  @apply bg-[#3137C9] h-9 w-2/4 mb-5 text-center text-xs rounded-md transition-opacity;
+  @apply mb-5 h-9 w-2/4 rounded-md bg-[#3137C9] text-center text-xs transition-opacity;
   &:hover:enabled {
-    @apply opacity-40 cursor-pointer;
+    @apply cursor-pointer opacity-40;
   }
   &:disabled {
     @apply bg-gray-500;
@@ -9,8 +9,8 @@
 }
 
 .works {
-  @apply text-center bg-[#3137C9] h-[30px] w-[120px] mb-5 text-xs rounded-sm transition-opacity;
+  @apply mb-5 h-[30px] w-[120px] rounded-sm bg-[#3137C9] text-center text-xs transition-opacity;
   &:hover {
-    @apply opacity-40 cursor-pointer;
+    @apply cursor-pointer opacity-40;
   }
 }

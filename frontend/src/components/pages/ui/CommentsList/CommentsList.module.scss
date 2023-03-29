@@ -1,5 +1,5 @@
 .commentList {
-  @apply mt-12 flex gap-6 flex-col justify-center mx-auto;
+  @apply mx-auto mt-12 flex flex-col justify-center gap-6;
   &:last-child {
     @apply pb-11;
   }

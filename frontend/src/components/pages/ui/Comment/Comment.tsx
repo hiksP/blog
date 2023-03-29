@@ -1,7 +1,7 @@
-import { FC } from "react";
-import styles from "./Comment.module.scss";
-import { IComment } from "../../../../types/comment.interface";
-import dateFormat from "dateformat";
+import { IComment } from '../../../../types/comment.interface'
+import styles from './Comment.module.scss'
+import dateFormat from 'dateformat'
+import { FC } from 'react'
 
 const Comment: FC<{ comment: IComment }> = ({ comment }) => {
   return (
@@ -11,14 +11,14 @@ const Comment: FC<{ comment: IComment }> = ({ comment }) => {
         <div className={styles.info}>
           <p className={styles.name}>{comment.authorName}</p>
           <p className={styles.date}>
-            {dateFormat(comment?.date, "d.mm.yyyy")}
+            {dateFormat(comment?.date, 'd.mm.yyyy')}
           </p>
         </div>
       </div>
       <p className={styles.text}>{comment.text}</p>
       <button className={styles.reply}>Ответить</button>
     </li>
-  );
-};
+  )
+}
 
-export default Comment;
+export default Comment

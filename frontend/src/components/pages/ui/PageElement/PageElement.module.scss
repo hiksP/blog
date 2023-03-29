@@ -1,5 +1,5 @@
 .page {
-  @apply flex justify-center items-center text-base font-normal w-[40px] h-[40px] rounded bg-[#0d0d0d] transition-opacity;
+  @apply flex h-[40px] w-[40px] items-center justify-center rounded bg-[#0d0d0d] text-base font-normal transition-opacity;
   &:hover {
     @apply cursor-pointer opacity-40;
   }

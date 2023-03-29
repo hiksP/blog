@@ -1,15 +1,15 @@
 .otherArticles {
-  @apply text-lg font-medium mb-6;
+  @apply mb-6 text-lg font-medium;
   @media (max-width: 1000px) {
-    @apply text-base mb-4;
+    @apply mb-4 text-base;
   }
 }
 
 .links {
-  @apply flex justify-between pb-7 mb-7 items-center w-full;
+  @apply mb-7 flex w-full items-center justify-between pb-7;
   border-bottom: solid #3f3f3f 1px;
   @media (max-width: 1000px) {
-    @apply pb-5 mb-5;
+    @apply mb-5 pb-5;
   }
 }
 

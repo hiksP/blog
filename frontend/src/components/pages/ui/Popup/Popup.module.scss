@@ -1,5 +1,5 @@
 .popup {
-  @apply fixed flex items-center flex-col invisible justify-center w-full h-full bg-black bg-opacity-50  top-0 left-0 right-0 bottom-0 opacity-0 transition-all z-0;
+  @apply invisible fixed top-0 left-0 right-0 bottom-0 z-0 flex h-full w-full  flex-col items-center justify-center bg-black bg-opacity-50 opacity-0 transition-all;
   @media (max-width: 1150px) {
     @apply pl-[215px];
   }
@@ -35,11 +35,11 @@
 }
 
 .opened {
-  @apply visible opacity-100 z-10;
+  @apply visible z-10 opacity-100;
 }
 
 .close {
-  @apply w-[20px] h-[20px] bg-cancel relative top-[35px] left-[220px] transition-opacity;
+  @apply relative top-[35px] left-[220px] h-[20px] w-[20px] bg-cancel transition-opacity;
   &:hover {
     @apply cursor-pointer opacity-40;
   }

@@ -1,13 +1,18 @@
-import { FC } from "react";
-import { IComment } from "../../../../types/comment.interface";
-import Comment from "../Comment/Comment";
-import EmptyComments from "../EmptyComments/EmptyComments";
-import Loader from "../Loader/Loader";
-import styles from "./CommentsList.module.scss";
+import { IComment } from '../../../../types/comment.interface'
+import Comment from '../Comment/Comment'
+import EmptyComments from '../EmptyComments/EmptyComments'
+import Loader from '../Loader/Loader'
+import styles from './CommentsList.module.scss'
+import { FC } from 'react'
 
-const ComemntsList: FC<{ isLoading: boolean; commentsOnPage?: IComment[] }> = ({
+interface ICommentsList {
+  isLoading: boolean;
+  commentsOnPage?: IComment[] 
+}
+
+const ComemntsList: FC<ICommentsList> = ({
   isLoading,
-  commentsOnPage,
+  commentsOnPage
 }) => {
   return (
     <ul className={styles.commentList}>
@@ -21,7 +26,7 @@ const ComemntsList: FC<{ isLoading: boolean; commentsOnPage?: IComment[] }> = ({
         <EmptyComments></EmptyComments>
       )}
     </ul>
-  );
-};
+  )
+}
 
-export default ComemntsList;
+export default ComemntsList

@@ -1,9 +1,9 @@
 .discuss {
-  @apply text-base mb-6 font-medium;
+  @apply mb-6 text-base font-medium;
 }
 
 .commentList {
-  @apply mt-12 flex gap-6 flex-col justify-center mx-auto;
+  @apply mx-auto mt-12 flex flex-col justify-center gap-6;
   &:last-child {
     @apply pb-11;
   }

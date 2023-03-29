@@ -1,7 +1,7 @@
-import { FC } from "react";
-import styles from "./PostToRead.module.scss";
-import dateFormat from "dateformat";
-import { IPost } from "../../../../types/post.interface";
+import { IPost } from '../../../../types/post.interface'
+import styles from './PostToRead.module.scss'
+import dateFormat from 'dateformat'
+import { FC } from 'react'
 
 const PostToRead: FC<{ post: IPost }> = ({ post }) => {
   return (
@@ -9,9 +9,9 @@ const PostToRead: FC<{ post: IPost }> = ({ post }) => {
       <a href={`${post._id}`} className={styles.link}>
         {post.title}
       </a>
-      <p className={styles.date}>{dateFormat(post.date, "d.mm.yyyy")}</p>
+      <p className={styles.date}>{dateFormat(post.date, 'd.mm.yyyy')}</p>
     </div>
-  );
-};
+  )
+}
 
-export default PostToRead;
+export default PostToRead

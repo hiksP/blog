@@ -1,52 +1,54 @@
-import { FC, useEffect, useState } from "react";
-import PageElement from "../PageElement/PageElement";
-import styles from "./PageSelection.module.scss";
+import PageElement from '../PageElement/PageElement'
+import styles from './PageSelection.module.scss'
+import { FC, useEffect, useState } from 'react'
 
-const PageSelection: FC<{
-  pages: number[];
-  handlePage: Function;
-  handleForward: Function;
-  handleBack: Function;
-  currentPage: number;
-  isSearching: boolean;
-}> = ({
+interface IPageSelection {
+  pages: number[]
+  handlePage: Function
+  handleForward: Function
+  handleBack: Function
+  currentPage: number
+  isSearching: boolean
+}
+
+const PageSelection: FC<IPageSelection> = ({
   pages,
   handlePage,
   handleForward,
   handleBack,
   currentPage,
-  isSearching,
+  isSearching
 }) => {
-  const [firstPage, setFirstPage] = useState(pages[0]);
-  const [lastPage, setLastPage] = useState(pages.slice(-1)[0]);
-  const [nextPage, setNextPage] = useState(currentPage + 1);
+  const [firstPage, setFirstPage] = useState(pages[0])
+  const [lastPage, setLastPage] = useState(pages.slice(-1)[0])
+  const [nextPage, setNextPage] = useState(currentPage + 1)
 
-  const isCurrentPageFirst = currentPage === firstPage;
-  const isCurrentPageLast = currentPage === lastPage;
-  const [isPagesTooMuch, setPagesTooMuch] = useState<boolean>(false);
-  const [pagesMuch, setPagesMuch] = useState<number[]>([]);
+  const isCurrentPageFirst = currentPage === firstPage
+  const isCurrentPageLast = currentPage === lastPage
+  const [isPagesTooMuch, setPagesTooMuch] = useState<boolean>(false)
+  const [pagesMuch, setPagesMuch] = useState<number[]>([])
 
   useEffect(() => {
-    setNextPage(currentPage + 1);
+    setNextPage(currentPage + 1)
     if (pages.length > 3) {
-      setPagesTooMuch(true);
+      setPagesTooMuch(true)
       if (nextPage >= lastPage) {
-        setPagesMuch([currentPage - 1, currentPage, lastPage]);
+        setPagesMuch([currentPage - 1, currentPage, lastPage])
       } else {
-        setPagesMuch([currentPage, nextPage, lastPage]);
+        setPagesMuch([currentPage, nextPage, lastPage])
       }
       if (currentPage === lastPage) {
-        setPagesMuch([firstPage, currentPage - 1, currentPage]);
+        setPagesMuch([firstPage, currentPage - 1, currentPage])
       }
     }
-  }, [pages, currentPage]);
+  }, [pages, currentPage])
 
   return (
     <div className={styles.container}>
       <button
         disabled={isCurrentPageFirst}
         onClick={() => {
-          handleBack();
+          handleBack()
         }}
         className={isSearching ? styles.noButton : styles.button}
       >
@@ -82,14 +84,14 @@ const PageSelection: FC<{
       <button
         disabled={isCurrentPageLast}
         onClick={() => {
-          handleForward();
+          handleForward()
         }}
         className={isSearching ? styles.noButton : styles.button}
       >
         &gt;
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default PageSelection;
+export default PageSelection

@@ -1,13 +1,13 @@
 .notFound {
-  @apply flex my-0 mx-auto items-center flex-col;
+  @apply my-0 mx-auto flex flex-col items-center;
 }
 
 .container {
-  @apply flex flex-col items-center mt-[25vh];
+  @apply mt-[25vh] flex flex-col items-center;
 }
 
 .title {
-  @apply text-[220px] text-[#FF7A00] text-center m-0 p-0 mb-1;
+  @apply m-0 mb-1 p-0 text-center text-[220px] text-[#FF7A00];
   text-shadow: 4px 4px 1px white;
   @media (max-width: 400px) {
     @apply text-[180px];
@@ -15,15 +15,15 @@
 }
 
 .text {
-  @apply text-2xl mt-32 mb-4 text-center text-[#B1A18D];
+  @apply mt-32 mb-4 text-center text-2xl text-[#B1A18D];
   @media (max-width: 400px) {
     @apply text-xl;
   }
 }
 
 .link {
-  @apply text-[#ff7a00] text-base font-bold text-center transition-opacity;
+  @apply text-center text-base font-bold text-[#ff7a00] transition-opacity;
   &:hover {
-    @apply opacity-40 cursor-pointer;
+    @apply cursor-pointer opacity-40;
   }
 }

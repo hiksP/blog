@@ -1,32 +1,32 @@
-import { FC, useContext, useState } from "react";
-import styles from "./SideBar.module.scss";
-import background from "../../../../assets/background.svg";
-import inst from "../../../../assets/instagram.svg";
-import steve from "../../../../assets/steve.jpg";
-import vk from "../../../../assets/vk.svg";
-import pinterest from "../../../../assets/pinterest.svg";
-import ContactPopup from "../ContactPopup/ContactPopup";
-import { Link } from "react-router-dom";
-import { Context } from "../../../../main";
+import background from '../../../../assets/background.svg'
+import inst from '../../../../assets/instagram.svg'
+import pinterest from '../../../../assets/pinterest.svg'
+import steve from '../../../../assets/steve.jpg'
+import vk from '../../../../assets/vk.svg'
+import { Context } from '../../../../main'
+import ContactPopup from '../ContactPopup/ContactPopup'
+import styles from './SideBar.module.scss'
+import { FC, useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const SideBar: FC = () => {
-  const [isContactPopupOpened, setContactPopupOpened] = useState(false);
+  const [isContactPopupOpened, setContactPopupOpened] = useState(false)
 
   const openPopup = () => {
-    setContactPopupOpened(true);
-  };
+    setContactPopupOpened(true)
+  }
 
   const closePopup = () => {
-    setContactPopupOpened(false);
-  };
+    setContactPopupOpened(false)
+  }
 
   const logoutHandler = () => {
-    localStorage.clear();
-    store.logout();
-    window.location.reload();
-  };
+    localStorage.clear()
+    store.logout()
+    window.location.reload()
+  }
 
-  const { store } = useContext(Context);
+  const { store } = useContext(Context)
   return (
     <>
       <section className={styles.sidebar}>
@@ -41,18 +41,18 @@ const SideBar: FC = () => {
           </div>
           <ul className={styles.socials}>
             <a
-              href="https://instagram.com"
-              target="_blank"
+              href='https://instagram.com'
+              target='_blank'
               className={styles.el}
             >
               <img src={inst} />
             </a>
-            <a href="https://vk.com/" target="_blank" className={styles.el}>
+            <a href='https://vk.com/' target='_blank' className={styles.el}>
               <img src={vk} />
             </a>
             <a
-              href="https://ru.pinterest.com/"
-              target="_blank"
+              href='https://ru.pinterest.com/'
+              target='_blank'
               className={styles.el}
             >
               <img src={pinterest} />
@@ -62,7 +62,7 @@ const SideBar: FC = () => {
             (НЕ)Front-end разработчик. Но надеюсь, когда-нибудь им стать.
           </p>
           <ul className={styles.navigation}>
-            <Link to="/" className={styles.link}>
+            <Link to='/' className={styles.link}>
               Главная
             </Link>
             {store.isAuth ? (
@@ -70,16 +70,16 @@ const SideBar: FC = () => {
                 Выйти
               </li>
             ) : (
-              <Link to="/login" className={styles.link}>
+              <Link to='/login' className={styles.link}>
                 Войти
               </Link>
             )}
-            <Link to="profile" className={styles.link}>
+            <Link to='profile' className={styles.link}>
               Профиль
             </Link>
           </ul>
           <div className={styles.buttons}>
-            <Link to="/works">
+            <Link to='/works'>
               <button className={styles.button}>Мои работы</button>
             </Link>
             <button onClick={openPopup} className={styles.button}>
@@ -93,7 +93,7 @@ const SideBar: FC = () => {
         onClose={closePopup}
       ></ContactPopup>
     </>
-  );
-};
+  )
+}
 
-export default SideBar;
+export default SideBar

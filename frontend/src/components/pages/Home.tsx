@@ -1,75 +1,77 @@
-import { FC, useEffect, useState } from "react";
-import { IPost } from "../../types/post.interface";
-import styles from "./Home.module.scss";
-import Post from "./ui/Post/Post";
-import Postmaker from "./ui/Postmaker/Postmaker";
-import Loader from "./ui/Loader/Loader";
-import Layout from "./ui/Layout/Layout";
-import { observer } from "mobx-react-lite";
-import PageSelection from "./ui/PageSelection/PageSelection";
-import NoPosts from "./ui/NoPosts/NoPosts";
+import { IPost } from '../../types/post.interface'
+import styles from './Home.module.scss'
+import Layout from './ui/Layout/Layout'
+import Loader from './ui/Loader/Loader'
+import NoPosts from './ui/NoPosts/NoPosts'
+import PageSelection from './ui/PageSelection/PageSelection'
+import Post from './ui/Post/Post'
+import Postmaker from './ui/Postmaker/Postmaker'
+import { observer } from 'mobx-react-lite'
+import { FC, useEffect, useState } from 'react'
 
-const Home: FC<{
-  posts?: IPost[];
-  isLoading: boolean;
-  handleSearch: Function;
-  foundPosts?: IPost[];
-  postsRefetch: Function;
-}> = ({ posts, isLoading, handleSearch, foundPosts, postsRefetch }) => {
+interface IHome {
+  posts?: IPost[]
+  isLoading: boolean
+  handleSearch: Function
+  foundPosts?: IPost[]
+  postsRefetch: Function
+}
+
+const Home: FC<IHome> = ({ posts, isLoading, handleSearch, foundPosts, postsRefetch }) => {
   // все посты
-  const [postsOnPage, setPostsOnPage] = useState<IPost[]>();
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [postsOnPage, setPostsOnPage] = useState<IPost[]>()
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
-  const [isSearching, setIsSearching] = useState<boolean>(false);
+  const [isSearching, setIsSearching] = useState<boolean>(false)
 
   //посты которые отображаются
 
-  const [currentPosts, setCurrentPosts] = useState<IPost[]>();
-  const [pages, setPages] = useState<number[]>([]);
-  const postsPerPage = 3;
+  const [currentPosts, setCurrentPosts] = useState<IPost[]>()
+  const [pages, setPages] = useState<number[]>([])
+  const postsPerPage = 3
 
   // отображение постов и количества страниц на странице
   useEffect(() => {
-    setIsSearching(false);
-    setPostsOnPage(posts);
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    setCurrentPosts(postsOnPage?.slice(indexOfFirstPost, indexOfLastPost));
+    setIsSearching(false)
+    setPostsOnPage(posts)
+    const indexOfLastPost = currentPage * postsPerPage
+    const indexOfFirstPost = indexOfLastPost - postsPerPage
+    setCurrentPosts(postsOnPage?.slice(indexOfFirstPost, indexOfLastPost))
     if (foundPosts?.length < postsOnPage?.length) {
-      setIsSearching(true);
-      setCurrentPosts(foundPosts?.slice(indexOfFirstPost, indexOfLastPost));
+      setIsSearching(true)
+      setCurrentPosts(foundPosts?.slice(indexOfFirstPost, indexOfLastPost))
     }
-  }, [posts, postsOnPage, currentPage, foundPosts]);
+  }, [posts, postsOnPage, currentPage, foundPosts])
 
   const handlePage = (event: any) => {
-    setCurrentPage(Number(event.target.innerHTML));
-  };
+    setCurrentPage(Number(event.target.innerHTML))
+  }
 
   const handleForward = () => {
-    setCurrentPage(currentPage + 1);
-  };
+    setCurrentPage(currentPage + 1)
+  }
 
   const handleBack = () => {
-    setCurrentPage(currentPage - 1);
-  };
+    setCurrentPage(currentPage - 1)
+  }
 
   useEffect(() => {
     if (postsOnPage) {
-      const pagesArr: number[] = [];
+      const pagesArr: number[] = []
       for (let i = 1; i <= Math.ceil(postsOnPage.length / postsPerPage); i++) {
-        pagesArr.push(i);
-        setPages(pagesArr);
+        pagesArr.push(i)
+        setPages(pagesArr)
       }
     }
 
     if (isSearching && currentPosts) {
-      const pagesArr: number[] = [];
+      const pagesArr: number[] = []
       for (let i = 1; i <= Math.ceil(currentPosts.length / postsPerPage); i++) {
-        pagesArr.push(i);
-        setPages(pagesArr);
+        pagesArr.push(i)
+        setPages(pagesArr)
       }
     }
-  }, [postsOnPage, currentPosts, foundPosts]);
+  }, [postsOnPage, currentPosts, foundPosts])
 
   return (
     <Layout handleSearch={handleSearch}>
@@ -78,7 +80,7 @@ const Home: FC<{
         {isLoading ? (
           <Loader></Loader>
         ) : currentPosts?.length ? (
-          currentPosts.map((post) => <Post post={post} key={post._id}></Post>)
+          currentPosts.map(post => <Post post={post} key={post._id}></Post>)
         ) : (
           <NoPosts></NoPosts>
         )}
@@ -94,7 +96,7 @@ const Home: FC<{
         ></PageSelection>
       ) : null}
     </Layout>
-  );
-};
+  )
+}
 
-export default observer(Home);
+export default observer(Home)

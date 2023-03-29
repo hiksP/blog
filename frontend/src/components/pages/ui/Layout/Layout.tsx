@@ -1,20 +1,25 @@
-import { FC, ReactNode, useState } from "react";
-import Header from "../../header/Header";
-import SideBar from "../SideBar/SideBar";
-import styles from "./Layout.module.scss";
+import Header from '../../header/Header'
+import SideBar from '../SideBar/SideBar'
+import styles from './Layout.module.scss'
+import { FC, ReactNode, useState } from 'react'
 
-const Layout: FC<{ children?: ReactNode; handleSearch: Function }> = ({
+interface ILayout {
+  children?: ReactNode;
+  handleSearch: Function
+}
+
+const Layout: FC<ILayout> = ({
   children,
-  handleSearch,
+  handleSearch
 }) => {
-  const [width, SetWidth] = useState(window.innerWidth);
+  const [width, SetWidth] = useState(window.innerWidth)
 
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     setTimeout(() => {
-      const windowInnerWidth = window.innerWidth;
-      SetWidth(windowInnerWidth);
-    }, 1000);
-  });
+      const windowInnerWidth = window.innerWidth
+      SetWidth(windowInnerWidth)
+    }, 1000)
+  })
 
   return width > 680 ? (
     <>
@@ -27,7 +32,7 @@ const Layout: FC<{ children?: ReactNode; handleSearch: Function }> = ({
       <Header handleSearch={handleSearch}></Header>
       <div className={styles.layout}>{children}</div>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

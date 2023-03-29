@@ -1,23 +1,23 @@
-import { useQuery } from "@tanstack/react-query";
-import { observer } from "mobx-react-lite";
-import { FC, useContext, useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import Article from "./components/pages/article/Article";
-import Auth from "./components/pages/auth/Auth";
-import Home from "./components/pages/Home";
-import NotFoundPage from "./components/pages/notFoundPage/NotFoundPage";
-import Profile from "./components/pages/Profile/Profile";
-import Works from "./components/pages/Works/Works";
-import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
-import { Context } from "./main";
-import { PostService } from "./services/PostService";
-import { IPost } from "./types/post.interface";
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute'
+import Home from './components/pages/Home'
+import Profile from './components/pages/Profile/Profile'
+import Works from './components/pages/Works/Works'
+import Article from './components/pages/article/Article'
+import Auth from './components/pages/auth/Auth'
+import NotFoundPage from './components/pages/notFoundPage/NotFoundPage'
+import { Context } from './main'
+import { PostService } from './services/PostService'
+import { IPost } from './types/post.interface'
+import { useQuery } from '@tanstack/react-query'
+import { observer } from 'mobx-react-lite'
+import { FC, useContext, useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 
 const App: FC = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [foundPosts, setFoundPosts] = useState<IPost[]>();
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [foundPosts, setFoundPosts] = useState<IPost[]>()
 
-  const { store } = useContext(Context);
+  const { store } = useContext(Context)
 
   // получение постов
 
@@ -25,37 +25,37 @@ const App: FC = () => {
     data: posts,
     error,
     isLoading,
-    refetch,
-  } = useQuery(["posts"], () => PostService.getPosts());
+    refetch
+  } = useQuery(['posts'], () => PostService.getPosts())
 
   // проверка на логин
 
   useEffect(() => {
-    store.checkAuth();
-    setLoggedIn(JSON.parse(localStorage.getItem("isAuth")));
-  }, []);
+    store.checkAuth()
+    setLoggedIn(JSON.parse(localStorage.getItem('isAuth')))
+  }, [])
 
   const loginFunc = () => {
-    setLoggedIn(true);
-  };
+    setLoggedIn(true)
+  }
 
   // поиск постов
 
   const handleSearch = (input: string) => {
-    const foundPosts = posts?.filter((post) => {
-      return post.title.toLowerCase().includes(input.toLowerCase());
-    });
-    setFoundPosts(foundPosts);
-  };
+    const foundPosts = posts?.filter(post => {
+      return post.title.toLowerCase().includes(input.toLowerCase())
+    })
+    setFoundPosts(foundPosts)
+  }
 
   const postsRefetch = () => {
-    refetch();
-  };
+    refetch()
+  }
 
   return (
     <Routes>
       <Route
-        path="/"
+        path='/'
         element={
           <Home
             handleSearch={handleSearch}
@@ -67,19 +67,19 @@ const App: FC = () => {
         }
       />
       <Route
-        path="/login"
+        path='/login'
         element={
           <Auth handleSearch={handleSearch} loginFunc={loginFunc}></Auth>
         }
       />
       <Route
-        path="/register"
+        path='/register'
         element={
           <Auth handleSearch={handleSearch} loginFunc={loginFunc}></Auth>
         }
       />
       <Route
-        path="/profile"
+        path='/profile'
         element={
           <ProtectedRoute
             loggedIn={loggedIn}
@@ -88,16 +88,16 @@ const App: FC = () => {
         }
       />
       <Route
-        path="/works"
+        path='/works'
         element={<Works handleSearch={handleSearch}></Works>}
       />
       <Route
-        path="/id/:id"
+        path='/id/:id'
         element={<Article handleSearch={handleSearch} posts={posts}></Article>}
       />
-      <Route path="*" element={<NotFoundPage></NotFoundPage>} />
+      <Route path='*' element={<NotFoundPage></NotFoundPage>} />
     </Routes>
-  );
-};
+  )
+}
 
-export default observer(App);
+export default observer(App)

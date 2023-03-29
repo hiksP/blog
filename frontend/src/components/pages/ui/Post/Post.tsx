@@ -1,12 +1,12 @@
-import { FC } from "react";
-import styles from "./Post.module.scss";
-import dateFormat from "dateformat";
-import { IPost } from "../../../../types/post.interface";
-import { Link } from "react-router-dom";
+import { IPost } from '../../../../types/post.interface'
+import styles from './Post.module.scss'
+import dateFormat from 'dateformat'
+import { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 const Post: FC<{ post: IPost }> = ({ post }) => {
   function hideDescription(text: string, count: number) {
-    return text.slice(0, count) + (text.length > count ? "..." : "");
+    return text.slice(0, count) + (text.length > count ? '...' : '')
   }
 
   return (
@@ -22,13 +22,13 @@ const Post: FC<{ post: IPost }> = ({ post }) => {
         </p>
       </div>
       <div className={styles.info}>
-        <p className={styles.date}>{dateFormat(post.date, "d.mm.yyyy")}</p>
+        <p className={styles.date}>{dateFormat(post.date, 'd.mm.yyyy')}</p>
         <Link to={`id/${post._id}`} className={styles.link}>
           Читать
         </Link>
       </div>
     </article>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post

@@ -1,40 +1,40 @@
-import { FC, useContext, useState } from "react";
-import Button from "../ui/Button/Button";
-import Layout from "../ui/Layout/Layout";
-import styles from "./Profile.module.scss";
-import { Context } from "../../../main";
-import { useForm } from "react-hook-form";
-import Authinput, { FormValues } from "../ui/Input/Authinput";
-import AvatarPopup from "../ui/AvatarPopoup/AvatarPopup";
-import AuthError from "../ui/Error/AuthError";
-import { observer } from "mobx-react-lite";
+import { Context } from '../../../main'
+import AvatarPopup from '../ui/AvatarPopoup/AvatarPopup'
+import Button from '../ui/Button/Button'
+import AuthError from '../ui/Error/AuthError'
+import Authinput, { FormValues } from '../ui/Input/Authinput'
+import Layout from '../ui/Layout/Layout'
+import styles from './Profile.module.scss'
+import { observer } from 'mobx-react-lite'
+import { FC, useContext, useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 const Profile: FC<{ handleSearch: Function }> = ({ handleSearch }) => {
-  const { store } = useContext(Context);
+  const { store } = useContext(Context)
 
   const { handleSubmit, formState, control } = useForm<FormValues>({
     defaultValues: {
-      Email: `${localStorage.getItem("Email")}`,
-      Password: "",
-      Name: `${localStorage.getItem("userName")}`,
-      Confirm: "",
+      Email: `${localStorage.getItem('Email')}`,
+      Password: '',
+      Name: `${localStorage.getItem('userName')}`,
+      Confirm: ''
     },
-    mode: "onChange",
-  });
+    mode: 'onChange'
+  })
 
-  const [isPopupOpened, setPopupOpened] = useState(false);
+  const [isPopupOpened, setPopupOpened] = useState(false)
 
   const openPopup = () => {
-    setPopupOpened(true);
-  };
+    setPopupOpened(true)
+  }
 
   const closePopup = () => {
-    setPopupOpened(false);
-  };
+    setPopupOpened(false)
+  }
 
   const onSubmit = (data: FormValues) => {
-    store.patchUser(data.Email, data.Name);
-  };
+    store.patchUser(data.Email, data.Name)
+  }
 
   return (
     <Layout handleSearch={handleSearch}>
@@ -44,13 +44,13 @@ const Profile: FC<{ handleSearch: Function }> = ({ handleSearch }) => {
           <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             <Authinput
               control={control}
-              name="Name"
+              name='Name'
               rules={{
-                required: "Вы пропустили имя",
+                required: 'Вы пропустили имя',
                 minLength: {
                   value: 3,
-                  message: "Минимальная длина данного поля - 3",
-                },
+                  message: 'Минимальная длина данного поля - 3'
+                }
               }}
             ></Authinput>
             {formState.errors.Name && (
@@ -58,22 +58,22 @@ const Profile: FC<{ handleSearch: Function }> = ({ handleSearch }) => {
             )}
             <Authinput
               control={control}
-              name="Email"
+              name='Email'
               rules={{
-                required: "Вы пропустили Email",
+                required: 'Вы пропустили Email',
                 pattern: {
                   value:
                     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                  message: "Введите верный Email",
-                },
+                  message: 'Введите верный Email'
+                }
               }}
             ></Authinput>
             {formState.errors.Email && (
               <AuthError>{formState.errors.Email.message}</AuthError>
             )}
-            <Authinput control={control} name="Password"></Authinput>
-            <Authinput control={control} name="Confirm"></Authinput>
-            <Button disabled={!formState.isValid} type="submit">
+            <Authinput control={control} name='Password'></Authinput>
+            <Authinput control={control} name='Confirm'></Authinput>
+            <Button disabled={!formState.isValid} type='submit'>
               Сохранить
             </Button>
           </form>
@@ -87,7 +87,7 @@ const Profile: FC<{ handleSearch: Function }> = ({ handleSearch }) => {
         <AvatarPopup isOpen={isPopupOpened} onClose={closePopup}></AvatarPopup>
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export default observer(Profile);
+export default observer(Profile)

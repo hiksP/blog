@@ -1,57 +1,57 @@
-import { FC, useContext } from "react";
-import styles from "./Auth.module.scss";
-import { Link } from "react-router-dom";
-import Layout from "../ui/Layout/Layout";
-import Button from "../ui/Button/Button";
-import { Context } from "../../../main";
-import { useForm } from "react-hook-form";
-import Authinput, { FormValues } from "../ui/Input/Authinput";
-import AuthError from "../ui/Error/AuthError";
-import { useNavigate } from "react-router-dom";
+import { Context } from '../../../main'
+import Button from '../ui/Button/Button'
+import AuthError from '../ui/Error/AuthError'
+import Authinput, { FormValues } from '../ui/Input/Authinput'
+import Layout from '../ui/Layout/Layout'
+import styles from './Auth.module.scss'
+import { FC, useContext } from 'react'
+import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 type FuncProps = {
-  loginFunc: (values: void) => void;
-  handleSearch: (values: string) => void;
-};
+  loginFunc: (values: void) => void
+  handleSearch: (values: string) => void
+}
 
 const Auth: FC<FuncProps> = (props: FuncProps) => {
-  const isLogin = window.location.pathname === "/login";
+  const isLogin = window.location.pathname === '/login'
   const { handleSubmit, formState, control } = useForm<FormValues>({
     defaultValues: {
-      Email: "",
-      Password: "",
-      Name: "",
+      Email: '',
+      Password: '',
+      Name: ''
     },
-    mode: "onChange",
-  });
+    mode: 'onChange'
+  })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { store } = useContext(Context);
+  const { store } = useContext(Context)
   const onSubmit = async (data: FormValues) => {
     if (isLogin) {
-      await store.login(data.Email, data.Password, navigate);
-      store.isAuth ? props.loginFunc() : null;
+      await store.login(data.Email, data.Password, navigate)
+      store.isAuth ? props.loginFunc() : null
     } else {
-      await store.register(data.Email, data.Password, data.Name, navigate);
+      await store.register(data.Email, data.Password, data.Name, navigate)
     }
-  };
+  }
 
   return (
     <Layout handleSearch={props.handleSearch}>
       <section className={styles.auth}>
-        <h2 className={styles.title}>{isLogin ? "Вход" : "Регистрация"}</h2>
+        <h2 className={styles.title}>{isLogin ? 'Вход' : 'Регистрация'}</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <Authinput
             control={control}
-            name="Email"
+            name='Email'
             rules={{
-              required: "Вы пропустили Email",
+              required: 'Вы пропустили Email',
               pattern: {
                 value:
                   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "Введите верный Email",
-              },
+                message: 'Введите верный Email'
+              }
             }}
           ></Authinput>
           {formState.errors.Email && (
@@ -59,17 +59,17 @@ const Auth: FC<FuncProps> = (props: FuncProps) => {
           )}
           <Authinput
             control={control}
-            name="Password"
+            name='Password'
             rules={{
-              required: "Вы пропустили пароль",
+              required: 'Вы пропустили пароль',
               minLength: {
                 value: 3,
-                message: "Минимальная длина пароля - 3",
+                message: 'Минимальная длина пароля - 3'
               },
               maxLength: {
                 value: 32,
-                message: "Максимальная длина пароля - 32",
-              },
+                message: 'Максимальная длина пароля - 32'
+              }
             }}
           ></Authinput>
           {formState.errors.Password && (
@@ -78,23 +78,23 @@ const Auth: FC<FuncProps> = (props: FuncProps) => {
           {!isLogin ? (
             <Authinput
               control={control}
-              name="Name"
-              rules={{ required: "Вы пропустили имя" }}
+              name='Name'
+              rules={{ required: 'Вы пропустили имя' }}
             ></Authinput>
           ) : null}
           {formState.errors.Name && (
             <AuthError>{formState.errors.Name.message}</AuthError>
           )}
-          <Button disabled={!formState.isValid} type="submit">
-            {isLogin ? "Войти" : "Зарегестрироваться"}
+          <Button disabled={!formState.isValid} type='submit'>
+            {isLogin ? 'Войти' : 'Зарегестрироваться'}
           </Button>
         </form>
-        <Link to={isLogin ? "/register" : "/login"} className={styles.link}>
-          {isLogin ? "Еще не зарегестрированы?" : "Уже зарегестрированы?"}
+        <Link to={isLogin ? '/register' : '/login'} className={styles.link}>
+          {isLogin ? 'Еще не зарегестрированы?' : 'Уже зарегестрированы?'}
         </Link>
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export default Auth;
+export default Auth

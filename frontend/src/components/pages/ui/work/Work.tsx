@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import Button from "../Button/Button";
-import styles from "./Work.module.scss";
-import work from "../../../../assets/work.svg";
+import work from '../../../../assets/work.svg'
+import Button from '../Button/Button'
+import styles from './Work.module.scss'
+import { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 const Work: FC = () => {
   return (
@@ -22,12 +22,12 @@ const Work: FC = () => {
           <p className={styles.tag}>создание сайта</p>
           <p className={styles.tag}>SMM</p>
         </div>
-        <Link className={styles.link} to="">
+        <Link className={styles.link} to=''>
           <Button>Перейти на сайт</Button>
         </Link>
       </div>
     </article>
-  );
-};
+  )
+}
 
-export default Work;
+export default Work

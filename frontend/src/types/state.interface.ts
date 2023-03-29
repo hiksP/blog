@@ -1,5 +1,5 @@
-import Store from "../store/store";
+import Store from '../store/store'
 
 export interface State {
-  store: Store;
+  store: Store
 }

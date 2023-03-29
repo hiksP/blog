@@ -1,9 +1,9 @@
 .container {
-  @apply flex flex-row justify-center gap-4 items-center pb-20;
+  @apply flex flex-row items-center justify-center gap-4 pb-20;
 }
 
 .button {
-  @apply w-[40px] h-[40px] rounded bg-[#0d0d0d] transition-opacity text-base font-normal;
+  @apply h-[40px] w-[40px] rounded bg-[#0d0d0d] text-base font-normal transition-opacity;
   &:hover {
     @apply cursor-pointer opacity-40;
   }

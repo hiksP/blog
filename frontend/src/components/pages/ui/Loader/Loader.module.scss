@@ -1,8 +1,8 @@
 .loader {
-  @apply inline-block relative w-[80px] h-[80px];
+  @apply relative inline-block h-[80px] w-[80px];
 }
 .loader div {
-  @apply absolute border-[4px] border-solid border-white opacity-[1] rounded-[50%];
+  @apply absolute rounded-[50%] border-[4px] border-solid border-white opacity-[1];
   animation: loader 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
@@ -15,12 +15,12 @@
     @apply top-9 left-9 h-0 opacity-0;
   }
   4.9% {
-    @apply top-9 left-9 w-0 h-0 opacity-0;
+    @apply top-9 left-9 h-0 w-0 opacity-0;
   }
   5% {
-    @apply top-9 left-9 w-0 h-0 opacity-[1];
+    @apply top-9 left-9 h-0 w-0 opacity-[1];
   }
   100% {
-    @apply top-0 left-0 w-[72px] h-[72px] opacity-0;
+    @apply top-0 left-0 h-[72px] w-[72px] opacity-0;
   }
 }

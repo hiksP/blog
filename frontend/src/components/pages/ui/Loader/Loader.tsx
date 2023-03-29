@@ -1,5 +1,5 @@
-import { FC } from "react";
-import styles from "./Loader.module.scss";
+import styles from './Loader.module.scss'
+import { FC } from 'react'
 
 const Loader: FC = () => {
   return (
@@ -7,7 +7,7 @@ const Loader: FC = () => {
       <div></div>
       <div></div>
     </div>
-  );
-};
+  )
+}
 
-export default Loader;
+export default Loader

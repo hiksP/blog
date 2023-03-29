@@ -1,30 +1,32 @@
-import { FC, useState } from "react";
-import styles from "./PageElement.module.scss";
+import styles from './PageElement.module.scss'
+import { FC, useState } from 'react'
 
-const PageElement: FC<{
-  number: number;
-  handlePage: Function;
-  currentPage: number;
-  isPagesTooMuch: boolean;
-  nextPage: number;
-  lastPage: number;
-}> = ({
+interface IPageElement {
+  number: number
+  handlePage: Function
+  currentPage: number
+  isPagesTooMuch: boolean
+  nextPage: number
+  lastPage: number
+}
+
+const PageElement: FC<IPageElement> = ({
   number,
   handlePage,
   currentPage,
   isPagesTooMuch,
   nextPage,
-  lastPage,
+  lastPage
 }) => {
-  const isCurrentPage = currentPage === number;
-  const isNextPage = number === nextPage;
-  const isNextPageLast = number === lastPage;
+  const isCurrentPage = currentPage === number
+  const isNextPage = number === nextPage
+  const isNextPageLast = number === lastPage
   return isPagesTooMuch ? (
     <>
       <li
-        onClick={(e) => handlePage(e)}
+        onClick={e => handlePage(e)}
         className={
-          isCurrentPage ? styles.page + " " + styles.currentPage : styles.page
+          isCurrentPage ? styles.page + ' ' + styles.currentPage : styles.page
         }
       >
         {number.toString()}
@@ -37,14 +39,14 @@ const PageElement: FC<{
     </>
   ) : (
     <li
-      onClick={(e) => handlePage(e)}
+      onClick={e => handlePage(e)}
       className={
-        isCurrentPage ? styles.page + " " + styles.currentPage : styles.page
+        isCurrentPage ? styles.page + ' ' + styles.currentPage : styles.page
       }
     >
       {number.toString()}
     </li>
-  );
-};
+  )
+}
 
-export default PageElement;
+export default PageElement

@@ -1,5 +1,5 @@
 .title {
-  @apply text-white text-2xl mb-14;
+  @apply mb-14 text-2xl text-white;
   @media (max-width: 900px) {
     @apply text-xl;
   }
@@ -11,12 +11,12 @@
 .container {
   @apply flex flex-row justify-between;
   @media (max-width: 400px) {
-    @apply flex-col-reverse gap-8 justify-center items-center;
+    @apply flex-col-reverse items-center justify-center gap-8;
   }
 }
 
 .form {
-  @apply flex flex-col w-[600px];
+  @apply flex w-[600px] flex-col;
   @media (max-width: 1550px) {
     @apply w-[350px];
   }
@@ -39,31 +39,31 @@
 }
 
 .avatar {
-  @apply flex mr-5 flex-col;
+  @apply mr-5 flex flex-col;
 }
 
 .image {
-  @apply w-[200px] h-[200px] mb-4 object-contain;
+  @apply mb-4 h-[200px] w-[200px] object-contain;
   @media (max-width: 1100px) {
-    @apply w-[150px] h-[150px];
+    @apply h-[150px] w-[150px];
   }
 
   @media (max-width: 800px) {
-    @apply w-[100px] h-[100px];
+    @apply h-[100px] w-[100px];
   }
 
   @media (max-width: 680px) {
-    @apply w-[150px] h-[150px];
+    @apply h-[150px] w-[150px];
   }
 
   @media (max-width: 590px) {
-    @apply w-[100px] h-[100px];
+    @apply h-[100px] w-[100px];
   }
 }
 
 .choose {
   @apply text-base text-[#107EFF] transition-opacity;
   &:hover {
-    @apply opacity-40 cursor-pointer;
+    @apply cursor-pointer opacity-40;
   }
 }

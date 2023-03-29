@@ -1,25 +1,25 @@
-import { ReactNode, useEffect } from "react";
-import styles from "./Popup.module.scss";
+import styles from './Popup.module.scss'
+import { ReactNode, useEffect } from 'react'
 
 type PopupProps = {
-  children?: ReactNode;
-  isOpen: boolean;
-  onClose: Function;
-};
+  children?: ReactNode
+  isOpen: boolean
+  onClose: Function
+}
 
 const Popup = ({ children, isOpen, onClose }: PopupProps) => {
-  const isProfile = window.location.pathname === "/profile";
+  const isProfile = window.location.pathname === '/profile'
   useEffect(() => {
     const handleEscClose = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
+      if (e.key === 'Escape') {
+        onClose()
       }
-    };
+    }
 
-    document.addEventListener("keydown", handleEscClose);
+    document.addEventListener('keydown', handleEscClose)
 
-    return () => document.removeEventListener("keydown", handleEscClose);
-  }, []);
+    return () => document.removeEventListener('keydown', handleEscClose)
+  }, [])
 
   return (
     <div
@@ -30,12 +30,12 @@ const Popup = ({ children, isOpen, onClose }: PopupProps) => {
       <button
         onClick={() => onClose()}
         className={
-          !isProfile ? styles.close : styles.close + " " + styles.closeProfile
+          !isProfile ? styles.close : styles.close + ' ' + styles.closeProfile
         }
       ></button>
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default Popup;
+export default Popup

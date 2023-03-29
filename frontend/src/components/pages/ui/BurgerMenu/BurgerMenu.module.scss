@@ -1,9 +1,9 @@
 .nav {
-  @apply bg-[#0D0D0D] flex w-[100%] items-center h-[50px] justify-between;
+  @apply flex h-[50px] w-[100%] items-center justify-between bg-[#0D0D0D];
 }
 
 .box {
-  @apply bg-[#202020] flex items-center w-[190px] h-full;
+  @apply flex h-full w-[190px] items-center bg-[#202020];
 }
 
 .input {
@@ -11,14 +11,14 @@
 }
 
 .button {
-  @apply w-[50px] h-[50px] relative;
+  @apply relative h-[50px] w-[50px];
 }
 
 .button span {
-  @apply absolute z-10 top-[50%] left-[50%] w-[20px] h-[2px] bg-white mt-[-1px] ml-[-10px];
+  @apply absolute top-[50%] left-[50%] z-10 mt-[-1px] ml-[-10px] h-[2px] w-[20px] bg-white;
   &:before,
   &:after {
-    @apply content-[''] absolute top-[50%] left-[50%] w-[20px] h-[2px] bg-white mt-[-1px] ml-[-10px] transition-transform;
+    @apply absolute top-[50%] left-[50%] mt-[-1px] ml-[-10px] h-[2px] w-[20px] bg-white transition-transform content-[''];
   }
 
   &:before {
@@ -41,7 +41,7 @@
 }
 
 .blur {
-  @apply w-screen h-screen backdrop-blur-sm fixed right-0 top-0 translate-x-[-100%] transition-transform opacity-30 bg-black;
+  @apply fixed right-0 top-0 h-screen w-screen translate-x-[-100%] bg-black opacity-30 backdrop-blur-sm transition-transform;
 }
 
 .blurActive {
@@ -49,7 +49,7 @@
 }
 
 .content {
-  @apply fixed h-screen w-[300px] top-0 right-0 bg-[#0D0D0D] translate-x-[+100%] transition-all;
+  @apply fixed top-0 right-0 h-screen w-[300px] translate-x-[+100%] bg-[#0D0D0D] transition-all;
 }
 
 .contentActive {

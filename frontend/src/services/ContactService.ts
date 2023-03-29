@@ -1,20 +1,20 @@
-import $api from "../http";
-import { AxiosResponse } from "axios";
+import $api from '../http'
+import { AxiosResponse } from 'axios'
 
 export const ContactService = {
   async Contact(text: string, name: string, email: string) {
     return $api.post<AxiosResponse>(
-      "/contact",
+      '/contact',
       {
         text,
         name,
-        email,
+        email
       },
       {
         headers: {
-          "Content-Type": "application/json",
-        },
+          'Content-Type': 'application/json'
+        }
       }
-    );
-  },
-};
+    )
+  }
+}
