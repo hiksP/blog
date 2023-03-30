@@ -8,5 +8,5 @@ interface IProtectedRoute {
 }
 
 export const ProtectedRoute: FC<IProtectedRoute> = ({ loggedIn, component }) => {
-  return loggedIn ? component : <Navigate to='/' />
+  return loggedIn ? component : <Navigate to='/blog' />
 }

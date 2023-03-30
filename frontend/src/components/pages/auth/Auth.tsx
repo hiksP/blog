@@ -15,7 +15,7 @@ type FuncProps = {
 }
 
 const Auth: FC<FuncProps> = (props: FuncProps) => {
-  const isLogin = window.location.pathname === '/login'
+  const isLogin = window.location.pathname === '/blog/login'
   const { handleSubmit, formState, control } = useForm<FormValues>({
     defaultValues: {
       Email: '',

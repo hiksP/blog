@@ -5,5 +5,5 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  @apply bg-[#181818] text-base text-white;
+  @apply bg-[#181818] text-sm text-white;
 }

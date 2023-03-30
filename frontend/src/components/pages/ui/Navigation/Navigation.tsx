@@ -41,15 +41,15 @@ const Navigation: FC<{ handleSearch: Function }> = ({ handleSearch }) => {
     return (
       <nav className={styles.nav}>
         <ul className={styles.firstUl}>
-          <Link to='/'>
+          <Link to='/blog'>
             <li className={styles.el}>Главная</li>
           </Link>
-          <Link to={'/login'}>
+          <Link to={'/blog/login'}>
             <li className={styles.el}>Войти</li>
           </Link>
         </ul>
         <ul className={styles.secondUl}>
-          <Link to='/profile'>
+          <Link to='/blog/profile'>
             <li className={styles.el}>Профиль</li>
           </Link>
           <form
@@ -76,7 +76,7 @@ const Navigation: FC<{ handleSearch: Function }> = ({ handleSearch }) => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.firstUl}>
-        <Link to='/'>
+        <Link to='/blog'>
           <li className={styles.el}>Главная</li>
         </Link>
         <li className={styles.el} onClick={() => logoutHandler()}>
@@ -84,7 +84,7 @@ const Navigation: FC<{ handleSearch: Function }> = ({ handleSearch }) => {
         </li>
       </ul>
       <ul className={styles.secondUl}>
-        <Link to='/profile'>
+        <Link to='/blog/profile'>
           <li className={styles.el}>Профиль</li>
         </Link>
         <form onSubmit={searchSubmit} className={styles.box}>

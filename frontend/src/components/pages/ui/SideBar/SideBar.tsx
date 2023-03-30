@@ -62,7 +62,7 @@ const SideBar: FC = () => {
             (НЕ)Front-end разработчик. Но надеюсь, когда-нибудь им стать.
           </p>
           <ul className={styles.navigation}>
-            <Link to='/' className={styles.link}>
+            <Link to='/blog' className={styles.link}>
               Главная
             </Link>
             {store.isAuth ? (
@@ -70,16 +70,16 @@ const SideBar: FC = () => {
                 Выйти
               </li>
             ) : (
-              <Link to='/login' className={styles.link}>
+              <Link to='/blog/login' className={styles.link}>
                 Войти
               </Link>
             )}
-            <Link to='profile' className={styles.link}>
+            <Link to='/blog/profile' className={styles.link}>
               Профиль
             </Link>
           </ul>
           <div className={styles.buttons}>
-            <Link to='/works'>
+            <Link to='/blog/works'>
               <button className={styles.button}>Мои работы</button>
             </Link>
             <button onClick={openPopup} className={styles.button}>

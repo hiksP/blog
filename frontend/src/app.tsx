@@ -55,7 +55,7 @@ const App: FC = () => {
   return (
     <Routes>
       <Route
-        path='/'
+        path='/blog'
         element={
           <Home
             handleSearch={handleSearch}
@@ -67,19 +67,19 @@ const App: FC = () => {
         }
       />
       <Route
-        path='/login'
+        path='/blog/login'
         element={
           <Auth handleSearch={handleSearch} loginFunc={loginFunc}></Auth>
         }
       />
       <Route
-        path='/register'
+        path='/blog/register'
         element={
           <Auth handleSearch={handleSearch} loginFunc={loginFunc}></Auth>
         }
       />
       <Route
-        path='/profile'
+        path='/blog/profile'
         element={
           <ProtectedRoute
             loggedIn={loggedIn}
@@ -88,11 +88,11 @@ const App: FC = () => {
         }
       />
       <Route
-        path='/works'
+        path='/blog/works'
         element={<Works handleSearch={handleSearch}></Works>}
       />
       <Route
-        path='/id/:id'
+        path='/blog/id/:id'
         element={<Article handleSearch={handleSearch} posts={posts}></Article>}
       />
       <Route path='*' element={<NotFoundPage></NotFoundPage>} />

@@ -1,4 +1,5 @@
 import $api from '../../../http'
+import postPic from '../../../assets/post.jpg'
 import { PostService } from '../../../services/PostService'
 import { IPost } from '../../../types/post.interface'
 import ColumnToRead from '../ui/ColumnToRead/ColumnToRead'
@@ -76,13 +77,13 @@ const Article: FC<IArticle> = ({
               ></div>
               <p className={styles.topText}>поделиться</p>
             </div>
-            <h2 className={styles.title}>{post?.title}</h2>
-            <p className={styles.date}>{dateFormat(post?.date, 'd.mm.yyyy')}</p>
+            <h2 className={styles.title}>{post?.title || 'Post name'}</h2>
+            <p className={styles.date}>{dateFormat(post?.date, 'd.mm.yyyy') || 'x.xx.xxxx'}</p>
             <img
-              src={`${$api.defaults.baseURL}/${post?.picture}`}
+              src={`${$api.defaults.baseURL}/${post?.picture}` || postPic}
               className={styles.image}
             ></img>
-            <p className={styles.text}>{post?.content}</p>
+            <p className={styles.text}>{post?.content || 'Post content'}</p>
           </div>
           <ColumnToRead randomPosts={randomPosts}></ColumnToRead>
           <CommentSection></CommentSection>

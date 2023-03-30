@@ -12,6 +12,14 @@ const DB_URL = process.env.DB;
 const PORT = process.env.PORT || 7001;
 
 const app = express();
+
+app.use(cookieParser());
+
+app.use(function setCommonHeaders(req, res, next) {
+  res.set("Access-Control-Allow-Private-Network", "true");
+  next();
+});
+
 app.use(
   cors({
     credentials: true,
@@ -21,7 +29,6 @@ app.use(
 
 app.use(express.json());
 app.use(fileUpload());
-app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.status(200).json("Welcome");
